@@ -1,0 +1,86 @@
+﻿@model Spa_Management.Models.SpaDetails
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>SpaDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="spaGuid" />
+            <div class="form-group">
+                <label asp-for="registeredBy" class="control-label"></label>
+                <input asp-for="registeredBy" class="form-control" />
+                <span asp-validation-for="registeredBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="spaName" class="control-label"></label>
+                <input asp-for="spaName" class="form-control" />
+                <span asp-validation-for="spaName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pysicalLoc" class="control-label"></label>
+                <input asp-for="pysicalLoc" class="form-control" />
+                <span asp-validation-for="pysicalLoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="postalAddress" class="control-label"></label>
+                <input asp-for="postalAddress" class="form-control" />
+                <span asp-validation-for="postalAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PinNo" class="control-label"></label>
+                <input asp-for="PinNo" class="form-control" />
+                <span asp-validation-for="PinNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegCertNo" class="control-label"></label>
+                <input asp-for="RegCertNo" class="form-control" />
+                <span asp-validation-for="RegCertNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="contact" class="control-label"></label>
+                <input asp-for="contact" class="form-control" />
+                <span asp-validation-for="contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="incNum" class="control-label"></label>
+                <input asp-for="incNum" class="form-control" />
+                <span asp-validation-for="incNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="regDate" class="control-label"></label>
+                <input asp-for="regDate" class="form-control" />
+                <span asp-validation-for="regDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

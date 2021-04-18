@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Spa_Management.Models.tbNotifications>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Notifications</h4></div>
+            <div class="panel-body">
+                <table class="table table-responsive table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.type)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.message)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.logDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @if (item.type == 0)
+                                    {
+                                        <lable>General</lable>
+                                    }
+                                    else if (item.type == 1)
+                                    {
+                                        <lable>Applications</lable>
+                                    }
+                                    else if (item.type == 2)
+                                    {
+                                        <lable>System</lable>
+                                    }
+                                    else if (item.type == 3)
+                                    {
+                                        <lable>Fails</lable>
+                                    }
+                                    else if (item.type == 4)
+                                    {
+                                        <lable>CRB</lable>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.message)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.logDate)
+                                </td>
+                                <td>
+                                    @if (item.status == 0)
+                                    {
+                                        <button class="btn btn-block btn-danger btn-xs">New</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-block btn-success btn-xs">Read</button>
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                                        if (!User.IsInRole("MasterAdmin") && item.status == 0)
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.Id">Mark as Read</a>
+
+                                        }
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model Spa_Management.Controllers.CompanyDetails
+
+@{
+    ViewData["Title"] = "CRB Details";
+}
+
+
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>CRB Details</h4></div>
+    <div class="panel-body">
+        <div class="text-danger"><label> @ViewBag.CompanyDetails</label></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table table-hover table-responsive ">
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.compName)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.compName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.PinNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.PinNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.pysicalLoc)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.pysicalLoc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.crb.inComeDetails)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.crb.inComeDetails)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.crb.FullName)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.crb.FullName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.crb.TypeOfRelation)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.crb.TypeOfRelation)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.crb.ValidFrom)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.crb.ValidFrom)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+@*<div class="panel-footer fa-pull-left">
+    <form asp-action="Index" method="post" asp-controller="Applications">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <button class="btn btn-block btn-info btn-default" name="btn" value="Index" type="submit">Back to List</button>
+    </form>
+
+</div>*@

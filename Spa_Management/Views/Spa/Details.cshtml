@@ -1,0 +1,299 @@
+﻿@*@model Spa_Management.Models.SpaDetails
+
+    @{
+        ViewData["Title"] = "Details";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>SpaDetails</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.registeredBy)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.registeredBy)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.spaName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.spaName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.pysicalLoc)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.pysicalLoc)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.postalAddress)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.postalAddress)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PinNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PinNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RegCertNo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RegCertNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.contact)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.contact)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.incNum)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.incNum)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.regDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.regDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.spaGuid">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+
+@model Spa_Management.Controllers.SpaController.SpaBusinessDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Spa Details Details</h4></div>
+    <div class="panel-body">
+        <div class="text-danger"><label> @ViewBag.SpaDetails</label></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table table-hover table-responsive ">
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.appliedby)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.appliedby)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.ApplicantAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ApplicantAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.Contact)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Contact)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.spaName)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.spaName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.pysicalLoc)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.pysicalLoc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.postalAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.postalAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.contact)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.contact)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.RegCertNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.RegCertNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.PinNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.spaDetails.PinNo)
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.spaDetails.status)</b>
+                    </td>
+                    <td>
+
+                        @if ((int)ViewBag.State0 == 0)
+                        {
+                            <button class="btn btn-block btn-default btn-xs">Unverified</button>
+
+                        }
+                        else if ((int)ViewBag.State0 == 1)
+                        {
+                            <button class="btn btn-block btn-info btn-xs">Verified</button>
+
+                        }
+                        else if ((int)ViewBag.State0 == 2)
+                        {
+                            <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+
+                        }
+
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+
+    </div>
+    @if (User.IsInRole("MasterAdmin"))
+    {
+        <div class="panel panel-primary ">
+            <div class="panel-heading "><h4>Business CRB Details</h4></div>
+
+            <div class="panel-body">
+                <div class="text-danger"><label>@ViewBag.SpaDetails</label></div>
+                @*<p>Tutaziweka Hapa Sasa</p>*@
+                <table class="table table-responsive table-striped">
+                    <tr>
+                        <th>Check Date</th>
+                        <th>Score</th>
+                        <th>Details</th>
+                        <th>Trend</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(model => model.crb.date)</td>
+
+                        <td>@Html.DisplayFor(model => model.crb.score)</td>
+
+                        <td>@Html.DisplayFor(model => model.crb.inComeDetails) </td>
+
+                        <td>@Html.DisplayFor(model => model.crb.details) </td>
+
+
+                        <td>
+                            <a asp-action="CRBDetails" asp-route-id="@ViewBag.Gui">Details</a>
+                        </td>
+
+                    </tr>
+                </table>
+                @if ((int)ViewBag.State0 == 0)
+                {
+                    <div class="pull-right">
+                        <p>
+                            <a asp-action="CRBRefresh" asp-route-id="@ViewBag.Gui">Check CRB</a>
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+        
+    }
+
+
+</div>
+
+@if (User.IsInRole("MasterAdmin"))
+{
+    @if ((int)ViewBag.State0 == 0)
+    {
+        <div class="panel panel-danger">
+            <div class="panel-body">
+                <form asp-action="Verify" method="post" asp-controller="Spa">
+                    <input type="hidden" name="spaID" value="@ViewBag.Gui" />
+
+                    @*<div class="form-group">
+                            <label asp-for="SystemBanksGuid" class="control-label"></label>
+                            <select id="SystemBanksGuid" name="SystemBanksGuid" asp-for="SystemBanksGuid" class="form-control" asp-items="@(new SelectList(ViewBag.SystemBanksGuid, "SystemBanksGuid","bankName"))" onchange="form.submit();">
+                                <option>~ Please Select reason ~ </option>
+                            </select>
+                        </div>*@
+
+                    <label>Comments</label>
+                    <textarea name="Details" class="form-control" placeholder="~ Please add Descriptive comments here ~"></textarea>
+                    <div class="pull-right">
+                        <p>
+                            <div class="row">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-block btn-success btn-default" name="btn" value="Verify" type="submit">Verify</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-block btn-danger btn-default" name="btn" value="Reject" type="submit">Reject</button>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Spa" asp-action="Index" class="btn btn-warning">Back to List</a>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+}

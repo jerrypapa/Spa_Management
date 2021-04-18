@@ -1,0 +1,108 @@
+﻿@model Spa_Management.Models.tbCompanies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbCompanies</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.registeredBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.registeredBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.compName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.compName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pysicalLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pysicalLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.postalAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.postalAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PinNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PinNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegCertNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegCertNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.contact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.incDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.incDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.incNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.incNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.regDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.regDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BankCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BankCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.branchCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.branchCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.accNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.accNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.compGuid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

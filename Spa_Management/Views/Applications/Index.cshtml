@@ -1,0 +1,305 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model PaginatedList<Spa_Management.Models.tbApplications>
+@*@model IEnumerable<Spa_Management.Models.tbApplications>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Applications</h4></div>
+                    <div class="panel-body">
+                        @if (User.IsInRole("Individual") || User.IsInRole("CompanyUser") || User.IsInRole("CompanyAdmin"))
+                        {
+                        <div>
+                            <a asp-action="Create" class="btn btn-success btn-sm"><h4><strong>Make New Application</strong></h4></a>
+                            @*<a asp-controller="Mer" asp-action="Index" class="btn btn-warning">DashBoard</a>*@
+                        </div>
+                            @*<p>
+                                <a asp-action="Create"><h2><strong>Make New Application</strong></h2></a>
+                            </p>*@
+                           
+                        }
+
+                        <table id="example1" class="table table-responsive table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    @*@if (User.IsInRole("CompanyAdmin") || User.IsInRole("CompanyUser") || User.IsInRole("BankUser") || User.IsInRole("BankAdmin"))
+                    {
+
+                    }*@
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Amount"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Bank</a>
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Amount"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Tender No</a>
+                                    </th>
+                                    @*<th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Beneficiary"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Beneficiary</a>
+                    </th>*@
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Amount"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Details</a>
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.appDate)*@
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["appDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Date</a>
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Amount"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Amount</a>
+                                    </th>
+
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["Bond"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Bond Comission</a>
+                                    </th>
+                                    @if (User.IsInRole("") || User.IsInRole("MasterAdmin"))
+                                    {
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@ViewData["TradePawaComm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">TradePawa Comission</a>
+                                        </th>
+                                    }
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["status"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Status</a>
+                                    </th>
+                                    <th>
+                                        <a asp-action="Index" asp-route-sortOrder="@ViewData["approvalDate"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Approval Date</a>
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*@if (User.IsInRole("CompanyAdmin") || User.IsInRole("CompanyUser") || User.IsInRole("BankUser") || User.IsInRole("BankAdmin"))
+                        {*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tbSystemBanks.bankName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.tenderNo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Details)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.appDate)
+                                        </td>
+
+                                        <td>
+                                            @{
+                                                @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", item.amount);
+                                            }
+                                        </td>
+                                        @if (User.IsInRole("CompanyUser") || User.IsInRole("CompanyAdmin"))
+                                        {
+                                            <td>
+                                                @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", item.approvedAmount);
+
+
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", item.BankComm);
+                                            </td>
+                                        }
+
+                                        @if (User.IsInRole("") || User.IsInRole("MasterAdmin"))
+                                        {
+                                            <td>
+                                                @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", item.approvedAmount);
+                                            </td>
+
+                                        }
+
+                                        <td>
+                                            @if (item.status == 9)
+                                            {
+                                                <button class="btn btn btn-default btn-xs">Pending Payment</button>
+
+                                            }
+                                            @if (item.status == 50)
+                                            {
+                                                <button class="btn btn btn-default btn-xs">Ammended Pending Payment</button>
+
+                                            }
+                                            else if (item.status == 10)
+                                            {
+                                                <button class="btn btn btn-success btn-xs">Paid Pending Bank Processing</button>
+
+                                            }
+                                            else if (item.status == 51)
+                                            {
+                                                <button class="btn btn btn-success btn-xs">Ammend Paid Pending Bank Processing</button>
+
+                                            }
+                                            else if (item.status == 11)
+                                            {
+                                                <button class="btn btn btn-info btn-xs">Verified</button>
+
+                                            }
+                                            else if (item.status == 52)
+                                            {
+                                                <button class="btn btn btn-info btn-xs">Ammendment Verified</button>
+
+                                            }
+                                            else if (item.status == 12)
+                                            {
+
+                                                <button class="btn btn btn-danger btn-xs">Rejected</button>
+                                            }
+                                            else if (item.status == 53)
+                                            {
+
+                                                <button class="btn btn btn-danger btn-xs">Ammend Rejected</button>
+                                            }
+                                            else if (item.status == 13)
+                                            {
+
+                                                <button class="btn btn btn-success btn-xs">Approved</button>
+                                            }
+                                            else if (item.status == 54)
+                                            {
+
+                                                <button class="btn btn btn-success btn-xs">Ammend Approved</button>
+                                            }
+                                            else if (item.status == 14)
+                                            {
+
+                                                <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+                                            }
+                                            else if (item.status == 15)
+                                            {
+
+                                                <button class="btn btn btn-danger btn-xs">Discarded</button>
+                                            }
+                                            else if (item.status == 16)
+                                            {
+
+                                                <button class="btn btn btn-info btn-xs">Fully Paid</button>
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.approvalDate)
+                                        </td>
+
+                                        <td>
+
+                                            @if (User.IsInRole("CompanyAdmin") || User.IsInRole("CompanyUser"))
+                                            {
+                                                @if (item.status == 9)
+                                                {
+                                                    @*<button class="btn btn-warning btn-default" asp-action="CheckOut" asp-route-id="@item.CRBGuid" type="submit">Make Payments</button>*@
+                                                    <a asp-action="Edit" asp-route-id="@item.CRBGuid">Edit</a> <label>|</label>
+                                                    <a asp-action="Delete" asp-route-id="@item.CRBGuid">Cancel</a> <label>|</label>
+                                                    <a class="btn btn-warning btn-sm" asp-action="CheckOut" asp-route-id="@item.CRBGuid">Make Payments</a> <label>|</label>
+
+
+                                                }
+                                                @if (item.status == 50)
+                                                {
+                                                    <a asp-action="Edit" asp-route-id="@item.CRBGuid">Edit Ammend</a> <label>|</label>
+                                                    @*<a asp-action="Delete" asp-route-id="@item.CRBGuid">Cancel Ammend</a> <label>|</label>*@
+                                                    <a class="btn btn-warning btn-sm" asp-action="CheckOut" asp-route-id="@item.CRBGuid">Make Payments</a> <label>|</label>
+                                                }
+                                                @if (item.status == 51)
+                                                {
+                                                    <a asp-action="Payments" asp-controller="Applications" asp-route-id="@item.CRBGuid">Print Payment Receipt</a> <label>|</label>
+                                                }
+                                                @if (item.status == 10)
+                                                {
+                                                    <a asp-action="Payments" asp-controller="Applications" asp-route-id="@item.CRBGuid">Print Payment Receipt</a> <label>|</label>
+                                                }
+                                                @if (item.status == 13)//also check here if this bank allows clients to print
+                                                {
+
+                                                    <a asp-action="ClientToBankAmmend" asp-route-id="@item.CRBGuid">Ammend</a> <label>|</label>
+                                                    <a asp-action="Payments" asp-controller="Applications" asp-route-id="@item.CRBGuid">Print Payment Receipt</a> <label>|</label>
+
+                                                    @*<a asp-action="Delete" asp-route-id="@item.CRBGuid">Delete</a> <label>|</label>*@
+                                                }
+                                                @if (item.ActionCode == "0700")//also check here if this bank allows clients to print
+                                                {
+
+                                                    <a asp-action="BankToClientAmmend" asp-route-id="@item.CRBGuid">Ammend</a> <label>|</label>
+                                                }
+                                                @*@if (item.BidBondDocStatus == 0200 && item.ClientPreviewApproved == false && item.status==13)                                           {
+                                    <a asp-action="PreviewBond" asp-controller="Applications" asp-route-id="@item.CRBGuid">Preview Bid Bond</a> <label>|</label>
+                                }*@
+                                                @if (item.BidBondDocStatus == 0200 && item.status == 13)
+                                                {
+                                                    <a asp-action="DownloadBond" asp-controller="Applications" asp-route-id="@item.CRBGuid">Download Bid Bond</a> <label>|</label>
+                                                }
+                                                @if (item.BidBondDocStatus == 0700 && item.ClientPreviewApproved == false)
+                                                {
+                                                    <a asp-action="AmmendBond" asp-controller="Applications" asp-route-id="@item.CRBGuid">Ammend Bid Bond</a> <label>|</label>
+                                                }
+                                            }
+                                            @if (User.IsInRole("BankUser") || User.IsInRole("BankAdmin"))
+                                            {
+                                                @if (item.BidBondDocStatus == 0100 && item.status == 13)
+                                                {
+                                                    <a asp-action="CreateDocument" asp-controller="Applications" asp-route-id="@item.CRBGuid">Generate Bond</a> <label>|</label>
+                                                }
+                                                @if (item.BidBondDocStatus == 0200 && item.status == 13)
+                                                {
+                                                    <a asp-action="DownloadBond" asp-controller="Applications" asp-route-id="@item.CRBGuid">Download Bond</a> <label>|</label>
+                                                }
+                                            }
+                                            @if (User.IsInRole("MasterAdmin"))
+                                            {
+                                                @if (item.BidBondDocStatus == 0200 && item.status == 13)
+                                                {
+                                                    <a asp-action="DownloadBond" asp-controller="Applications" asp-route-id="@item.CRBGuid">Download Bond</a> <label>|</label>
+                                                }
+                                            }
+                                            <a asp-action="Details" asp-route-id="@item.CRBGuid">Details</a>
+                                            @*<a asp-action="Delete" asp-route-id="@item.CRBGuid">Delete</a>*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+
+                        @*<a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-page="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-page="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

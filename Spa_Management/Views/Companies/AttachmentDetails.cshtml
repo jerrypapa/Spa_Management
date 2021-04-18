@@ -1,0 +1,56 @@
+﻿@*@{
+        ViewData["Title"] = "AttachmentDetails";
+    }
+
+    <h2>AttachmentDetails</h2>*@
+
+@model Spa_Management.Controllers.CompanyDocumentDetails
+
+@{
+    ViewData["Title"] = "Attachment Details";
+}
+
+
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Attachment Details</h4></div>
+    <div class="panel-body">
+        <div class="text-danger"><label> @ViewBag.CompanyDocumentDetails</label></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table table-hover table-responsive ">
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.compDocs.PinCertificate)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.compDocs.PinCertificate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.compDocs.Cr12)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.compDocs.Cr12)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.compDocs.RegistrationCertificate)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.compDocs.RegistrationCertificate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.compDocs.BoardResolution)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.compDocs.BoardResolution)
+                    </td>
+                </tr> 
+            </table>
+        </div>
+    </div>
+</div>

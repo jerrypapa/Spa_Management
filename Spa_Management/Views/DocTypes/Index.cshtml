@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Spa_Management.Models.tbDocTypes>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="col-sm-12 col-md-9 col-lg-12">
+                    <div class="panel panel-info ">
+                        <div class="panel-heading "><h4>Document Types</h4></div>
+                        <div class="panel-body">
+                            <p>
+                                <a asp-action="Create">Add New</a>
+                            </p>
+                            <table id="example1" class="table table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Type)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Extensions)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.status)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Type)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Extensions)
+                                            </td>
+                                            <td>
+                                                @if (item.status == 0)
+                                                {
+                                                    <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                                                }
+                                                else
+                                                {
+
+                                                    <button class="btn btn-block btn-danger btn-xs">Discontinued</button>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

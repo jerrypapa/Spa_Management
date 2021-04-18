@@ -1,0 +1,117 @@
+﻿@model Spa_Management.Models.tbDirectors
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Director</h2>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit Director </h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    @*<div class="form-group">
+            <label asp-for="CompanyId" class="control-label"></label>
+            <input asp-for="CompanyId" class="form-control" />
+            <span asp-validation-for="CompanyId" class="text-danger"></span>
+        </div>*@
+                    <div class="form-group">
+                        <label asp-for="CompanyId" class="control-label"></label>
+                        <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                    @*<div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input asp-for="Verified" /> @Html.DisplayNameFor(model => model.Verified)
+                </label>
+            </div>
+        </div>*@
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelephoneNumber" class="control-label"></label>
+                        <input asp-for="TelephoneNumber" class="form-control" />
+                        <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdNumber" class="control-label"></label>
+                        <input asp-for="IdNumber" class="form-control" />
+                        <span asp-validation-for="IdNumber" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+            <label asp-for="Maker" class="control-label"></label>
+            <input asp-for="Maker" class="form-control" />
+            <span asp-validation-for="Maker" class="text-danger"></span>
+        </div>*@
+                    @*<div class="form-group">
+            <label asp-for="Checker" class="control-label"></label>
+            <input asp-for="Checker" class="form-control" />
+            <span asp-validation-for="Checker" class="text-danger"></span>
+        </div>*@
+                    @*<div class="form-group">
+            <label asp-for="CheckerComments" class="control-label"></label>
+            <input asp-for="CheckerComments" class="form-control" />
+            <span asp-validation-for="CheckerComments" class="text-danger"></span>
+        </div>*@
+                    @*<div class="form-group">
+            <label asp-for="checkerDate" class="control-label"></label>
+            <input asp-for="checkerDate" class="form-control" />
+            <span asp-validation-for="checkerDate" class="text-danger"></span>
+        </div>*@
+                    <div class="form-group">
+                        <label asp-for="Dob" class="control-label"></label>
+                        <input asp-for="Dob" class="form-control" />
+                        <span asp-validation-for="Dob" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdType" class="control-label"></label>
+                        <select asp-for="IdType" class="form-control" asp-items="ViewBag.idType">
+                            <option>Please Select</option>
+                        </select>
+                        @*@{
+
+            }
+            <input asp-for="IdType" class="form-control" />*@
+                        <span asp-validation-for="IdType" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+            <label asp-for="IdType" class="control-label"></label>
+            <input asp-for="IdType" class="form-control" />
+            <span asp-validation-for="IdType" class="text-danger"></span>
+        </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Save Changes" class="btn btn-success" />
+                    <input type="submit" value="Back to List" asp-action="Index" class="btn btn-warning" />
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            @*<input type="submit" value="Back to List" asp-action="Index" class="btn btn-warning" />*@
+            @*<a asp-action="Index">Back to List</a>*@
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

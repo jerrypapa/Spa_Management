@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Spa_Management.Models.BankSetups>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (ViewBag.DocsUploaded == false)
+{
+    <p>
+        <a asp-action="Create">Configure Setups</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.BankId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.letterHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Signature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.BankId)
+        </td>*@
+
+            <td>
+                <a asp-controller="BankSetups" asp-action="Download" asp-route-filename="@item.letterHead">Download</a>
+            </td>
+            <td>
+                <a asp-controller="BankSetups" asp-action="Download" asp-route-filename="@item.Signature">Download</a>
+            </td>
+            <td>
+                <a asp-controller="BankSetups" asp-action="Download" asp-route-filename="@item.Logo">Download</a>
+            </td>
+            <td>
+                <a asp-controller="BankSetups" asp-action="Download" asp-route-filename="@item.Stamp">Download</a>
+            </td>
+            <td>
+                @if ((int)item.Status == 0)
+                {
+
+                    <button class="btn btn-success btn-default btn-xs">Configured</button>
+
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

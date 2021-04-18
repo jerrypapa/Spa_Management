@@ -1,0 +1,42 @@
+﻿@model Spa_Management.Models.SpaServices
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SpaServices</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpaDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SpaDetails.PinNo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

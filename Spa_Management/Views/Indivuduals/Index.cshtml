@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Spa_Management.Models.tbIndivuduals>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Individuals</h4></div>
+                    <div class="panel-body">
+                        <table id="example1" class="table table-responsive table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.contact)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.dob)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.idNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.pysicalLoc)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.accNum)
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.tbBanks)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbBranches)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbGender)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbIdTypes)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbMaritalStatus)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbNationalities)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbSuffixes)
+                                        </th>*@
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.contact)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dob)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.pysicalLoc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.accNum)
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.tbBanks.BankCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbBranches.branchCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbGender.gender)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbIdTypes.idType)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbMaritalStatus.maritalStatus)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbNationalities.NationCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbSuffixes.suffix)
+                                            </td>*@
+                                        <td>
+                                            @if (User.IsInRole("Individual"))
+                                            {
+                                                <a asp-action="Edit" asp-route-id="@item.indGuid">Edit</a>
+                                                //< a asp-action= "Details" asp-route-id = "@item.indGuid" > Details </ a > |
+
+                                            }
+
+                                            @*<a asp-action="Delete" asp-route-id="@item.indGuid">Delete</a>*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                     
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+</section>
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

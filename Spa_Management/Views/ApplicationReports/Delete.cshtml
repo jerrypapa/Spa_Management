@@ -1,0 +1,249 @@
+﻿@model Spa_Management.Models.tbApplications
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbApplications</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.indGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.indGuid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.compGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.compGuid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.appliedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.appliedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.appDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.appDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BranchGuid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvedAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvedAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BankComm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BankComm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BidBondDocStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BidBondDocStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientPreviewApproved)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClientPreviewApproved)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientPrinted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClientPrinted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QrCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QrCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BidBondPath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BidBondPath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PIN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PIN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Purchaser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Purchaser)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.comments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AcceptTerms)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcceptTerms)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.terms)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.terms)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.expireDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.expireDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActionCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TenderPeriod)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenderPeriod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrintCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PrintCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Period)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tenderNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tenderNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.bondStartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bondStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tenderDocs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tenderDocs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.checkedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.checkedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.checkerComments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.checkerComments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.checkerDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.checkerDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CoreBankingReferenceNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CoreBankingReferenceNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PayRefrence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PayRefrence)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PayDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PayDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tbSystemBanks)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbSystemBanks.AllowAutoGene)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CRBGuid" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

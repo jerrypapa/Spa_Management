@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Spa_Management.Models.tbEmailLogs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Email Logs</h4></div>
+                    <div class="panel-body">
+                        <table id="example1" style="font-size:smaller" class="table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.to)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.from)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.subject)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.cc)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.bcc)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.message)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.to)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.from)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.subject)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.bcc)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.message)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.status)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

@@ -1,0 +1,65 @@
+﻿@model Spa_Management.Models.tbSystemBanks
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bankCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bankCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.bankName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bankName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximumSecurityLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaximumSecurityLimit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OveralSecuringLimit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OveralSecuringLimit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LimitBalance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LimitBalance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowAutoGene)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AllowAutoGene)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.regDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.regDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SystemBanksGuid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

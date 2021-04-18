@@ -1,0 +1,355 @@
+﻿@model Spa_Management.Controllers.CompanyDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Company Details</h4></div>
+    <div class="panel-body">
+        <div class="text-danger"><label> @ViewBag.CompanyDetails</label></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table table-hover table-responsive ">
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.appliedby)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.appliedby)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.ApplicantAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ApplicantAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.Contact)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Contact)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.compName)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.compName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.pysicalLoc)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.pysicalLoc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.postalAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.postalAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.contact)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.contact)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.RegCertNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.RegCertNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.PinNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.company.PinNo)
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.company.status)</b>
+                    </td>
+                    <td>
+
+                        @if ((int)ViewBag.State0 == 0)
+                        {
+                            <button class="btn btn-block btn-default btn-xs">Unverified</button>
+
+                        }
+                        else if ((int)ViewBag.State0 == 1)
+                        {
+                            <button class="btn btn-block btn-info btn-xs">Verified</button>
+
+                        }
+                        else if ((int)ViewBag.State0 == 2)
+                        {
+                            <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+
+                        }
+
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+
+    </div>
+    @if (User.IsInRole("MasterAdmin"))
+    {
+        @if ((int)ViewBag.State0 == 0)
+        {
+            <div class="panel panel-danger">
+                <div class="panel-body">
+                    <form asp-action="Verify" method="post" asp-controller="Companies">
+                        <input type="hidden" name="compID" value="@ViewBag.Gui" />
+
+                        @*<div class="form-group">
+                                <label asp-for="SystemBanksGuid" class="control-label"></label>
+                                <select id="SystemBanksGuid" name="SystemBanksGuid" asp-for="SystemBanksGuid" class="form-control" asp-items="@(new SelectList(ViewBag.SystemBanksGuid, "SystemBanksGuid","bankName"))" onchange="form.submit();">
+                                    <option>~ Please Select reason ~ </option>
+                                </select>
+                            </div>*@
+
+                        <label>Comments</label>
+                        <textarea name="Details" class="form-control" placeholder="~ Please add Descriptive comments here ~"></textarea>
+                        <div class="pull-right">
+                            <p>
+                                <div class="row">
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn-block btn-success btn-default" name="btn" value="Verify" type="submit">Verify</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-block btn-danger btn-default" name="btn" value="Reject" type="submit">Reject</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+
+</div>
+@if (User.IsInRole("MasterAdmin"))
+{
+    <div class="panel panel-primary ">
+        <div class="panel-heading "><h4>CRB Details</h4></div>
+
+        <div class="panel-body">
+            <div class="text-danger"><label>@ViewBag.CompanyDetails</label></div>
+            @*<p>Tutaziweka Hapa Sasa</p>*@
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Check Date</th>
+                    <th>Score</th>
+                    <th>Details</th>
+                    <th>Trend</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(model => model.crb.date)</td>
+
+                    <td>@Html.DisplayFor(model => model.crb.score)</td>
+
+                    <td>@Html.DisplayFor(model => model.crb.inComeDetails) </td>
+
+                    <td>@Html.DisplayFor(model => model.crb.details) </td>
+
+
+                    <td>
+                        <a asp-action="CRBDetails" asp-route-id="@ViewBag.Gui">Details</a>
+                    </td>
+
+                </tr>
+            </table>
+            @if ((int)ViewBag.State0 == 0)
+            {
+                <div class="pull-right">
+                    <p>
+                        <a asp-action="CRBRefresh" asp-route-id="@ViewBag.Gui">Check CRB</a>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="panel panel-primary ">
+        <div class="panel-heading "><h4>Company Attachments</h4></div>
+
+        <div class="panel-body">
+            <div class="text-danger"><label>@ViewBag.CompanyDocumentDetails</label></div>
+            @*<p>Tutaziweka Hapa Sasa</p>*@
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Board Resolution</th>
+                    <th>Pin Certificate</th>
+                    <th>Registration Certificate</th>
+                    <th>CR12 Form</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    @if ((int)ViewBag.DocState0 != 20)
+                    {
+                        <td>
+                            <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.BoardResolutionDocPath">Download</a>
+                        </td>
+                        <td>
+                            <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.PinCertDocPath">Download</a>
+                        </td>
+                        <td>
+                            <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.RegCertDocPath">Download</a>
+                        </td>
+                        <td>
+                            <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.Cr12DocPath">Download</a>
+                        </td>
+
+                        <td>
+                            @if ((int)ViewBag.DocState0 == 0)
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Pending</button>
+
+                            }
+                            else if ((int)ViewBag.DocState0 == 1)
+                            {
+                                <button class="btn btn-block btn-success btn-xs">Verified</button>
+
+                            }
+                            else if ((int)ViewBag.DocState0 == 2)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+                            }
+                            else if ((int)ViewBag.DocState0 == 3)
+                            {
+
+                                <button class="btn btn-block btn-success btn-xs">Verified</button>
+                            }
+                            @if ((int)ViewBag.DocState0 == 4)
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Verify Ammended</button>
+                            }
+                            else if ((int)ViewBag.DocState0 == 5)
+                            {
+
+                                <button class="btn btn-block btn-success btn-xs">Ammends Approved</button>
+                            }
+                            else if ((int)ViewBag.DocState0 == 6)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Ammends Rejected</button>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="CompanyDocs" asp-action="Details" asp-route-id="@ViewBag.Gui">View Attachments</a>
+                        </td>
+                    }
+
+                </tr>
+
+
+            </table>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div class="panel panel-primary ">
+        <div class="panel-heading "><h4>List Of Directors</h4></div>
+
+        <div class="panel-body">
+            <div class="text-danger"><label>@ViewBag.CompanyDetails</label></div>
+            @*<p>Tutaziweka Hapa Sasa</p>*@
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>TelephoneNumber</th>
+                    <th>Status</th>
+                    <th> </th>
+
+
+                </tr>
+                @foreach (var item in Model.directors)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.FirstName)</td>
+
+                        <td>@Html.DisplayFor(model => item.MiddleName)</td>
+
+                        <td>@Html.DisplayFor(model => item.LastName)</td>
+
+                        <td>@Html.DisplayFor(model => item.Email) </td>
+
+                        <td>@Html.DisplayFor(model => item.TelephoneNumber) </td>
+
+                        <td>
+                            @if (item.Verified == true)
+                            {
+                                <button class="btn btn-block btn-success btn-xs">Verified</button>
+
+                            }
+                            else
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Unverified</button>
+                            }
+                        </td>
+                        @if (item.Verified == true)
+                        {
+                            @*<td>
+                                    <a asp-action="CRBDetails" asp-route-id="@ViewBag.Gui">View Details</a>
+                                </td>*@
+                        }
+                        else
+                        {
+                            <td>
+                                <a asp-controller="tbDirectors" asp-action="Details" asp-route-id="@item.Id">Verify Director</a>
+                                @*<a asp-action="VerifyDirectors" asp-route-id="@item.Id">Verify Director</a>*@
+                            </td>
+
+                        }
+
+
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+    <div>
+        <a asp-controller="Companies" asp-action="Index"  class="btn btn-warning">Back to List</a>
+    </div>
+}

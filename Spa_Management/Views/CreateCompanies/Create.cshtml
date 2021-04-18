@@ -1,0 +1,128 @@
+﻿@model Spa_Management.Models.tbCompanies
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Register New Company</h4></div>
+            <div class="panel-body">
+                <form asp-action="Create" asp-controller="CreateCompanies" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <table class="table table-hover table-striped table-responsive">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="compName" class="control-label"></label>
+                                    <input asp-for="compName" class="form-control" required="" />
+                                    <span asp-validation-for="compName" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="contact" class="control-label"></label>
+                                    <input asp-for="contact" class="form-control" required="" />
+                                    <span asp-validation-for="contact" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="pysicalLoc" class="control-label"></label>
+                                    <input asp-for="pysicalLoc" class="form-control" required="" />
+                                    <span asp-validation-for="pysicalLoc" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="postalAddress" class="control-label"></label>
+                                    <input asp-for="postalAddress" class="form-control" required="" />
+                                    <span asp-validation-for="postalAddress" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="PinNo" class="control-label"></label>
+                                    <input asp-for="PinNo" class="form-control" required="" />
+                                    <span asp-validation-for="PinNo" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="RegCertNo" class="control-label"></label>
+                                    <input asp-for="RegCertNo" class="form-control" required="" />
+                                    <span asp-validation-for="RegCertNo" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <td>
+                                <h6>User Details</h6>
+                            </td>
+                        </tr>*@
+                        @*<tr>
+                            <td>
+                                <div class="form-group">
+                                   
+                                    <input asp-for="tbCompanyUsers.SirName" class="form-control" placeholder="Name" required="" />
+                                    <span asp-validation-for="tbCompanyUsers.SirName" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                   
+                                    <input asp-for="tbCompanyUsers.contact" class="form-control" placeholder="Mobile Number" required="" />
+                                    <span asp-validation-for="tbCompanyUsers.contact" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>*@
+                        @*<tr>
+                            <td>
+                                <div class="form-group">
+                                   
+                                    <input asp-for="tbCompanyUsers.email" class="form-control" placeholder="Email" required="" />
+                                    <span asp-validation-for="tbCompanyUsers.email" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    
+                                    <input asp-for="tbCompanyUsers.idNumber" class="form-control" placeholder="IDnumber" required="" />
+                                    <span asp-validation-for="tbCompanyUsers.idNumber" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>*@
+                    </table>
+
+                    <div class="form-group ">
+                        <input type="submit" class="btn btn-block btn-primary pull-right" />
+                        @*<p class="pull-right">By signing up, you agree to our <a href="#">Policies</a> </p>*@
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        @*<div>
+            <a asp-action="Index">Back to List</a>
+        </div>*@
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

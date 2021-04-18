@@ -1,0 +1,58 @@
+{
+  "OPERATION": "REGParent",
+  "msisdn": "+254721937262",
+  "emei": 1234567890123456789,
+  "androidId": "000000000011111111122222222000000011",
+  "parent": {
+    "sKulGuid": "0EDBAD17-50AE-45B5-95B0-2F856A1896D8",
+    "Suffix": "Mr",
+    "SirName": "Kariuki",
+    "FirstName": "Peter",
+    "LastName": "Thuku",
+    "email": "eng.chris.thuku@gmail.com",
+    "paymentStatus": 1,
+    "payDate": "2018-02-18T15:52:56.2805241+03:00",
+    "homeLatitude": 9.1,
+    "homeLongitude": 10.1,
+    "pickUpLatitude": 11.1,
+    "pickUpLongitude": 12.1,
+    "numberOfStudents": 2,
+    "prefereedBusRoute": "0C38903B-4FEA-486F-960D-DD80D58D3922",
+    "pwd": "1234"
+  },
+  "driver": {
+    "driverGuid": "0be63c9b-b005-4f3b-91cc-8dce3357fa5f",
+    "FirstName": "sample string 2"
+  },
+  "bus": {
+    "busGuid": "7f408353-eb7c-4d2a-8b71-6a62cf35562f",
+    "sKulGuid": "2ae0c20d-e305-4ccb-9bce-3c983e7c2af0",
+    "regNumber": "sample string 3",
+    "gpsTagId": "sample string 4"
+  }
+}
+
+
+{
+  "OPERATION": "REGParent",
+  "msisdn": "+254721937262",
+  "emei": 1234567890123456789,
+  "androidId": "000000000011111111122222222000000011",
+  "parent": {
+    "sKulGuid": "0EDBAD17-50AE-45B5-95B0-2F856A1896D8",
+    "Suffix": "Mr",
+    "SirName": "Kariuki",
+    "FirstName": "Peter",
+    "LastName": "Thuku",
+    "email": "eng.chris.thuku@gmail.com",
+    "paymentStatus": 1,
+    "payDate": "2018-02-18T15:52:56.2805241+03:00",
+    "homeLatitude": 9.1,
+    "homeLongitude": 10.1,
+    "pickUpLatitude": 11.1,
+    "pickUpLongitude": 12.1,
+    "numberOfStudents": 2,
+    "prefereedBusRoute": "0C38903B-4FEA-486F-960D-DD80D58D3922",
+    "pwd": "1234"
+  }
+  }

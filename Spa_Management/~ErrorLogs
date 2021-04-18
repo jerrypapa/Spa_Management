@@ -1,0 +1,5 @@
+=============Error Logging ===========
+===========Start============= 11/16/2018 4:57:47 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.Payments(String appId) in F:\softwares\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 453
+===========End============= 11/16/2018 4:57:47 PM

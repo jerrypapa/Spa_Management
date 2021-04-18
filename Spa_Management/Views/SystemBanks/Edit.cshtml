@@ -1,0 +1,74 @@
+﻿@model Spa_Management.Models.tbSystemBanks
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit Bank</h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SystemBanksGuid" />
+                    <div class="form-group">
+                        <label asp-for="bankCode" class="control-label"></label>
+                        <input asp-for="bankCode" class="form-control" readonly="true" />
+                        <span asp-validation-for="bankCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="bankName" class="control-label"></label>
+                        <input asp-for="bankName" class="form-control" />
+                        <span asp-validation-for="bankName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BondProcessDays" class="control-label"></label>
+                        <input asp-for="BondProcessDays" class="form-control" />
+                        <span asp-validation-for="BondProcessDays" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaximumSecurityLimit" class="control-label"></label>
+                        <input asp-for="MaximumSecurityLimit" class="form-control" />
+                        <span asp-validation-for="MaximumSecurityLimit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OveralSecuringLimit" class="control-label"></label>
+                        <input asp-for="OveralSecuringLimit" class="form-control" />
+                        <span asp-validation-for="OveralSecuringLimit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LimitBalance" class="control-label"></label>
+                        <input asp-for="LimitBalance" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="LimitBalance" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AllowAutoGene" class="control-label"></label>
+                        <select id='AllowAutoGene' name='AllowAutoGene'>
+                            <option value='1'>True</option>
+                            <option value='0'>False</option>
+                        </select>
+                    </div>
+                    @*<div class="form-group">
+            <label asp-for="regDate" class="control-label"></label>
+            <input asp-for="regDate" class="form-control" />
+            <span asp-validation-for="regDate" class="text-danger"></span>
+        </div>*@
+                    @*<div class="form-group">
+            <label asp-for="status" class="control-label"></label>
+            <input asp-for="status" class="form-control" />
+            <span asp-validation-for="status" class="text-danger"></span>
+        </div>*@
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

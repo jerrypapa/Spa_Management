@@ -1,0 +1,61 @@
+﻿@model Spa_Management.Models.tbAudit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>tbAudit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="userID" class="control-label"></label>
+                <input asp-for="userID" class="form-control" />
+                <span asp-validation-for="userID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="action" class="control-label"></label>
+                <input asp-for="action" class="form-control" />
+                <span asp-validation-for="action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="json" class="control-label"></label>
+                <input asp-for="json" class="form-control" />
+                <span asp-validation-for="json" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="page" class="control-label"></label>
+                <input asp-for="page" class="form-control" />
+                <span asp-validation-for="page" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionTime" class="control-label"></label>
+                <input asp-for="actionTime" class="form-control" />
+                <span asp-validation-for="actionTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sessionId" class="control-label"></label>
+                <input asp-for="sessionId" class="form-control" />
+                <span asp-validation-for="sessionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

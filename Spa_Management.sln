@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spa_Management", "BidBox\Spa_Management.csproj", "{29FBE030-9662-490F-88AB-CD600AD51E4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29FBE030-9662-490F-88AB-CD600AD51E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29FBE030-9662-490F-88AB-CD600AD51E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29FBE030-9662-490F-88AB-CD600AD51E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29FBE030-9662-490F-88AB-CD600AD51E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {410AAF56-7B5F-4F3C-9AE4-5F0E43268A69}
+	EndGlobalSection
+EndGlobal

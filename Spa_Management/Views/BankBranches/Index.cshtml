@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Spa_Management.Models.tbBankBranches>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-body">
+
+                        @if (User.IsInRole("MasterAdmin"))
+                        {
+                            <p>
+                                <a asp-action="Create">Create New</a>
+                            </p>
+                        }
+                        <table id="example1" class="table table-responsive table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Bank
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.branchCode)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.branchName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.regDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.adrress)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BankCollectionAccount)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbSystemBanks.bankName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.branchCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.branchName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.regDate)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.adrress)
+                                    </td>
+
+                                    <td>
+                                        @if (item.status == 0)
+                                        {
+                                            <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                                        }
+                                        else
+                                        {
+
+                                            <button class="btn btn-block btn-danger btn-xs">Discontinued</button>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BankCollectionAccount)
+                                    </td>
+                                    <td>
+                                        @if (User.IsInRole("MasterAdmin"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.BranchGuid">Edit</a> <label>|</label>
+                                            @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> <label>|</label>*@
+                                            <a asp-action="Delete" asp-route-id="@item.BranchGuid">Delete</a>
+
+                                        }
+
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+        );
+    });
+</script>
+

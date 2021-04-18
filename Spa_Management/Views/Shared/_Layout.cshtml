@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trade Pawa</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+    <link rel="stylesheet" href="">
+
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">
+   
+    <link rel="stylesheet" href="~/dist/css/skins/_all-skins.min.css">
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>Spa</b>Int'l</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Spa</b>Int'l</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                                    <span class="hidden-xs">@User.Identity.Name</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        @*<img id="layImageTwo" src="~/profPics/5dc8e0b0-68a5-4044-bc30-0198d1c4148aWIN_20180817_10_17_29_Pro.jpg" class="img-circle" alt="User Image">*@
+                                        <img id="myimage" src="#" class="img-circle" alt="User Image">
+                                        <p>
+                                            @User.Identity.Name
+                                            @*<small>Member since </small>*@
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        @if (User.IsInRole("Individual") || User.IsInRole("CompanyUser") || User.IsInRole("CompanyAdmin") || User.IsInRole("BankAdmin") || User.IsInRole("BankUser")|| User.IsInRole("BeneficiaryAdmin"))
+                                        {
+                                        <div class="pull-left">
+                                            <a asp-area="" asp-controller="Profile" asp-action="Index" class="btn btn-default btn-flat">Profile</a>
+                                        </div>
+                                        }
+                                        <div class="pull-right">
+                                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                                <button type="submit" class="btn btn-default btn-flat">Log out</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            </li>
+                        }
+                        else
+                        {
+                            @*<li><a asp-area="" asp-controller="Indivuduals" asp-action="Create">Sign Up</a></li>*@
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        }
+                        <!-- Control Sidebar Toggle Button -->
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+               
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active treeview">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li><a asp-area="" asp-controller="mer" asp-action="Index">DASHBOARD</a></li>
+                        if (User.IsInRole("CompanyUser"))
+                        {
+                            if ((ViewBag.DocumentsRegistered == true) && (ViewBag.DirectorsRegistered == true))
+                            {
+                                if (ViewBag.DirectorsVerified == true && (ViewBag.DocumentsVerified == true))
+                                {
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Applications</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="Applications" asp-action="Index">My Applications</a></li>
+                                            <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Reports</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="Applications" asp-action="Index">Transactions</a></li>
+                                            <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                            }
+
+
+                        }
+                        @if (User.IsInRole("CompanyAdmin"))
+                        {
+                            @if ((ViewBag.DirectorsRegistered == true) && (ViewBag.DocumentsRegistered == true))
+                            {
+                                if ((ViewBag.DirectorsVerified == true) && (ViewBag.DocumentsVerified == true))
+                                {
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Applications</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="Applications" asp-action="Index">Company Applications</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Administration</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="CompanyUsers" asp-action="Index">Add Company Users</a></li>
+                                            <li><a asp-area="" asp-controller="CompanyDocs" asp-action="Index">Attachments</a></li>
+                                            <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+                                            <li><a asp-area="" asp-controller="tbDirectors" asp-action="Index">Add Company Directors</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-users"></i> <span>Reports</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="CompanyUsers" asp-action="Index">Users</a></li>
+                                            <li><a asp-area="" asp-controller="Applications" asp-action="Index">Transactions</a></li>
+                                            <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+                                        </ul>
+                                    </li>
+                                }
+
+
+                            }
+                            if ((ViewBag.DirectorsRegistered == true) && (ViewBag.DocumentsRegistered == false))
+                            {
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-files-o"></i>
+                                        <span>Attachments</span>
+                                        <span class="label label-primary pull-right">0</span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="CompanyDocs" asp-action="Index">Add Attachments</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-files-o"></i>
+                                        <span>Directors</span>
+                                        <span class="label label-primary pull-right">0</span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="tbDirectors" asp-action="Index">Add Directors</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                            if ((ViewBag.DirectorsRegistered == true) && (ViewBag.DocumentsRegistered == true))
+                            {
+                                if ((ViewBag.DirectorsVerified == false) || (ViewBag.DocumentsVerified == false))
+                                {
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-files-o"></i>
+                                            <span>Attachments</span>
+                                            <span class="label label-primary pull-right">0</span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="CompanyDocs" asp-action="Index">Add Attachments</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-files-o"></i>
+                                            <span>Directors</span>
+                                            <span class="label label-primary pull-right">0</span>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li><a asp-area="" asp-controller="tbDirectors" asp-action="Index">Add Directors</a></li>
+                                        </ul>
+                                    </li>
+
+                                }
+
+                            }
+
+                            if ((ViewBag.DirectorsRegistered == false) && (ViewBag.DocumentsRegistered == false))
+                            {
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-files-o"></i>
+                                        <span>Directors</span>
+                                        <span class="label label-primary pull-right">0</span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="tbDirectors" asp-action="Index">Add Directors</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+
+                        if (User.IsInRole("BankAdmin") || User.IsInRole("BankUser"))
+                        {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Applications</span>
+
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="SystemBanks" asp-action="Index">Bank Info</a></li>*@
+                                    <li><a asp-area="" asp-controller="Applications" asp-action="Index">Bank Applications</a></li>
+
+                                    @if (User.IsInRole("BankAdmin"))
+                                    {
+                                        <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">Bank Users</a></li>
+                                        @*<li><a asp-area="" asp-controller="BankSetups" asp-action="Index">Bank Setups</a></li>*@
+                                        <li><a asp-area="" asp-controller="DocUploadReqs" asp-action="Index">Required Docs</a></li>
+                                        <li><a asp-area="" asp-controller="BankBranches" asp-action="Index">Bank Branches</a></li>
+                                        <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+
+                                    }
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Reports</span>
+
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="SystemBanks" asp-action="Index">Bank Info</a></li>*@
+                                    <li><a asp-area="" asp-controller="Applications" asp-action="Index">Bank Applications</a></li>
+
+                                    @if (User.IsInRole("BankAdmin"))
+                                    {
+                                        <li><a asp-area="" asp-controller="Applications" asp-action="Index">Transactions</a></li>
+                                        <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">System Users</a></li>
+                                        @*<li><a asp-area="" asp-controller="DocUploadReqs" asp-action="Index">Commisions</a></li>
+                            <li><a asp-area="" asp-controller="BankBranches" asp-action="Index">Ammendments</a></li>*@
+                                        <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="pages/mailbox/mailbox.html">
+                                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                                    <small class="label pull-right bg-yellow"></small>
+                                </a>
+                            </li>
+                        }
+                        if (User.IsInRole("BeneficiaryAdmin"))
+                        {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Applications</span>
+
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="SystemBanks" asp-action="Index">Bank Info</a></li>
+                        <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">My Info</a></li>*@
+                                    <li><a asp-area="" asp-controller="Applications" asp-action="Index">Bank Applications</a></li>
+
+                                    @*@if (User.IsInRole("BenericiaryAdmin"))
+                        {
+                            <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">Bank Users</a></li>
+
+
+                        }*@
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="pages/mailbox/mailbox.html">
+                                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                                    <small class="label pull-right bg-yellow"></small>
+                                </a>
+                            </li>
+                        }
+
+                        if (User.IsInRole("Spa Admin"))
+                        {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Administration</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="SpaUsers" asp-action="Index">Spa Users</a></li>
+                                    <li><a asp-area="" asp-controller="SpaServices" asp-action="Index">Spa Services</a></li>
+                                    <li><a asp-area="" asp-controller="SpaRoles" asp-action="Index">System Roles</a></li>
+                                    @*<li><a asp-area="" asp-controller="tbDirectors" asp-action="Index">Add Company Directors</a></li>*@
+                                </ul>
+                            </li>
+                        }
+                        if (User.IsInRole("Spa User"))
+                        {
+                            if ((ViewBag.IsReceptionist == true))
+                            {
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-users"></i> <span>Appoitments</span>
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="SpaUsers" asp-action="Index">Active</a></li>
+                                        <li><a asp-area="" asp-controller="CompanyDocs" asp-action="Index">Closed</a></li>
+
+                                    </ul>
+                                </li>
+
+                            }
+                            if ((ViewBag.IsAttendant == true))
+                            {
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-users"></i> <span>Appointments</span>
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="SpaUsers" asp-action="Index">My Active Jobs</a></li>
+                                        <li><a asp-area="" asp-controller="CompanyDocs" asp-action="Index">My Closed</a></li>
+                                        <li><a asp-area="" asp-controller="SpaRoles" asp-action="Index">My Commisions</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-users"></i> <span>Commisions</span>
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a asp-area="" asp-controller="SpaUsers" asp-action="Index">My Accrued Commisions</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                        }
+                        if (User.IsInRole("MasterAdmin"))
+                        {
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gears"></i> <span>Administration</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="Companies" asp-action="Index">Companies</a></li>
+                                    <li><a asp-area="" asp-controller="SystemBanks" asp-action="Index">Banks</a></li>
+                                    <li><a asp-area="" asp-controller="BankBranches" asp-action="Index">Bank Branches</a></li>
+
+                                    <li><a asp-area="" asp-controller="Applications" asp-action="Index">Bank Applications</a></li>
+                                    <li><a asp-area="" asp-controller="Beneficiaries" asp-action="Index">Self Onboarded Beneficiaries</a></li>
+                                    <li><a asp-area="" asp-controller="Beneficialies" asp-action="Index">Populate Beneficiaries</a></li>
+
+
+
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Users</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="Indivuduals" asp-action="Index">Individuals</a></li>*@
+                                    @*<li><a asp-area="" asp-controller="CompanyUsers" asp-action="Index">Company Users</a></li>*@
+                                    <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">Bank Users</a></li>
+                                    <li><a asp-area="" asp-controller="IPQRSChecks" asp-action="Index">IPQRS Checks</a></li>
+                                    <li><a asp-area="" asp-controller="CRBChecks" asp-action="Index">CRB Checks</a></li>
+                                    <li><a asp-area="" asp-controller="SpaUsers" asp-action="Index">Spa Users</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>SPAs</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="Indivuduals" asp-action="Index">Individuals</a></li>*@
+                                    @*<li><a asp-area="" asp-controller="CompanyUsers" asp-action="Index">Company Users</a></li>*@
+                                    <li><a asp-area="" asp-controller="Spa" asp-action="Index">Registered Spas</a></li>
+                                    @*<li><a asp-area="" asp-controller="IPQRSChecks" asp-action="Index">IPQRS Checks</a></li>
+                        <li><a asp-area="" asp-controller="CRBChecks" asp-action="Index">CRB Checks</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>CRM</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="CrmLogs" asp-action="Index">Crm Logs</a></li>
+                                    <li><a asp-area="" asp-controller="CrmIssueCategories" asp-action="Index">Crm Issues Category</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>TradePawa Matrices</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+
+                                    <li><a asp-area="" asp-controller="TradePawaCommissionMatrices" asp-action="Index">Commission Matrices</a></li>
+                                    <li><a asp-area="" asp-controller="PostAmmendMentMatrices" asp-action="Index">Ammendment Matrices</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Bank Matrices</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+
+                                    <li><a asp-area="" asp-controller="BankAmmendmentMatrices" asp-action="Index">Ammendment Matrices</a></li>
+                                    <li><a asp-area="" asp-controller="ComMatrices" asp-action="Index">Comission Matrices</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-flag-o"></i> <span>Audits</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="Audits" asp-action="Index">Audits</a></li>
+                                    <li><a asp-area="" asp-controller="ErrorLogs" asp-action="Index">Error Logs</a></li>
+                                    <li><a asp-area="" asp-controller="EmailLogs" asp-action="Index">Email Logs</a></li>
+                                    <li><a asp-area="" asp-controller="SMSLogs" asp-action="Index">SMS Logs</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-circle"></i> <span>Setups</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="Banks" asp-action="Index">Banks</a></li>
+                        <li><a asp-area="" asp-controller="Branches" asp-action="Index">Branches</a></li>*@
+                                    <li><a asp-area="" asp-controller="Currencies" asp-action="Index">Currencies</a></li>
+                                    <li><a asp-area="" asp-controller="DocTypes" asp-action="Index">Doc Types</a></li>
+                                    <li><a asp-area="" asp-controller="Designations" asp-action="Index">Designations</a></li>
+                                    <li><a asp-area="" asp-controller="Genders" asp-action="Index">Genders</a></li>
+                                    <li><a asp-area="" asp-controller="IdTypes" asp-action="Index">ID Types</a></li>
+                                    <li><a asp-area="" asp-controller="MaritalStatus" asp-action="Index">Marital Status</a></li>
+                                    <li><a asp-area="" asp-controller="PostalCodes" asp-action="Index">Postal Codes</a></li>
+                                    <li><a asp-area="" asp-controller="Nationalities" asp-action="Index">Nationalities</a></li>
+                                    <li><a asp-area="" asp-controller="Suffixes" asp-action="Index">Suffixes</a></li>
+                                    <li><a asp-area="" asp-controller="SysConfigs" asp-action="Index">Sys Configs</a></li>
+                                    <li><a asp-area="" asp-controller="BondProcessingActions" asp-action="Index">Bond Processing Actions</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Reports</span>
+
+                                </a>
+                                <ul class="treeview-menu">
+                                    @*<li><a asp-area="" asp-controller="SystemBanks" asp-action="Index">Bank Info</a></li>*@
+                                    <li><a asp-area="" asp-controller="Applications" asp-action="Index">Bank Applications</a></li>
+
+                                    @if (User.IsInRole("BankAdmin"))
+                                    {
+                                        <li><a asp-area="" asp-controller="BankUsers" asp-action="Index">Transactions</a></li>
+                                        <li><a asp-area="" asp-controller="BankSetups" asp-action="Index">System Users</a></li>
+                                        <li><a asp-area="" asp-controller="DocUploadReqs" asp-action="Index">Commisions</a></li>
+                                        <li><a asp-area="" asp-controller="BankBranches" asp-action="Index">Ammendments</a></li>
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        <li>
+                            <a asp-area="" asp-controller="Notifications" asp-action="Index">
+                                <span>Notifications</span>
+                                <small id="notCount" class="label pull-right bg-red"></small>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="FeedBacks" asp-action="Index">
+                                <span>FeedBacks</span>
+                                <small id="notCount" class="label pull-right bg-red"></small>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        @*<li><a asp-area="" asp-controller="Indivuduals" asp-action="Create">Sign Up</a></li>*@
+                        @*<li><a asp-area="" asp-controller="Mer" asp-action="Index">Log In</a></li>*@
+
+                    }
+
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                @RenderBody()
+            </div><!-- /.content-wrapper -->
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.0.0.
+                </div>
+                <strong>Copyright &copy; @DateTime.Now.Year <a href="">SpaInt'l</a>.</strong> All rights reserved.   &#x25C8;
+            </footer>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Create the tabs -->
+                    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    
+                </aside><!-- /.control-sidebar -->
+                <!-- Add the sidebar's background. This div must be placed
+                     immediately after the control sidebar -->
+            }
+            <div class="control-sidebar-bg"></div>
+        </div><!-- ./wrapper -->
+        <!-- jQuery 2.1.4 -->
+        <script src="~/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>$.widget.bridge('uibutton', $.ui.button);</script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="~/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Morris.js charts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="~/plugins/morris/morris.min.js"></script>
+        <!-- Sparkline -->
+        <script src="~/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!-- jvectormap -->
+        <script src="~/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="~/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="~/plugins/knob/jquery.knob.js"></script>
+        <!-- daterangepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+        <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- datepicker -->
+        <script src="~/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <!-- Slimscroll -->
+        <script src="~/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="~/plugins/fastclick/fastclick.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/dist/js/app.min.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="~/dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/dist/js/demo.js"></script>
+        <script src="~/js/site.js"></script>
+        <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+
+        <script src="~/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+        <!----->
+
+
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/api/userDet",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //alert(JSON.stringify(data)); //layImageOne
+                $("#myimage").attr('src', "../../"+ data);
+                //localStorage.LeonMaster = data;
+                //$("#myimage").attr('src', "dist/img/user2-160x160.jpg");
+            }, //End of AJAX Success function
+
+            failure: function (data) {
+                //alert("Fail");
+            }, //End of AJAX failure function
+            error: function (data) {
+                //alert("Error");
+            } //End of AJAX error function
+        });
+        $.ajax({
+            type: "GET",
+            url: "/api/userDet/1",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                $("#notCount").text(data);
+            },
+            failure: function (data) {
+                //alert("Fail");
+            }, //End of AJAX failure function
+            error: function (data) {
+                //alert("Error");
+            } //End of AJAX error function
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+        //$('#example2').DataTable({
+        //  "paging": true,
+        //  "lengthChange": false,
+        //  "searching": false,
+        //  "ordering": true,
+        //  "info": true,
+        //  "autoWidth": false
+        //});
+    });
+</script>
+<script>
+    $(document).ready(function() {
+
+  (function($) {
+    
+    var $form = $('#filter-form');
+    var $helpBlock = $("#filter-help-block");
+    
+    //Watch for user typing to refresh the filter
+    $('#filter').keyup(function() {
+      var filter = $(this).val();
+      $form.removeClass("has-success has-error");
+      
+      if (filter == "") {
+        $helpBlock.text("No filter applied.")
+        $('.searchable .panel').show();
+      } else {
+        //Close any open panels
+        $('.collapse.in').removeClass('in');
+        
+        //Hide questions, will show result later
+        $('.searchable .panel').hide();
+
+        var regex = new RegExp(filter, 'i');
+
+        var filterResult = $('.searchable .panel').filter(function() {
+          return regex.test($(this).text());
+        })
+
+        if (filterResult) {
+          if (filterResult.length != 0) {
+            $form.addClass("has-success");
+            $helpBlock.text(filterResult.length + " question(s) found.");
+            filterResult.show();
+          } else {
+            $form.addClass("has-error").removeClass("has-success");
+            $helpBlock.text("No questions found.");
+          }
+
+        } else {
+          $form.addClass("has-error").removeClass("has-success");
+          $helpBlock.text("No questions found.");
+        }
+      }
+    })
+
+  }($));
+});
+
+//
+//  This function disables the enter button
+//  because we're using a form element to filter, if a user
+//  pressed enter, it would 'submit' a form and reload the page
+//  Probably not needed here on Codepen, but necessary elsewhere
+// 
+$('.noEnterSubmit').keypress(function(e) {
+  if (e.which == 13) e.preventDefault();
+});
+</script>

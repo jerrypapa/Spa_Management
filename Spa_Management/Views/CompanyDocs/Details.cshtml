@@ -1,0 +1,89 @@
+﻿@model Spa_Management.Models.CompanyDocs
+
+@{
+    ViewData["Title"] = "Details";
+}
+    <div class="panel panel-info">
+        <div class="panel-heading ">
+            <h4>Attachment Details</h4>
+            <table class="table table-responsive table-hover ">
+                <tr>
+                    <th><label>Document</label></th>
+                    <th><label>Download Link</label></th>
+                </tr>
+                <tr>
+                    <td>@Html.Raw("Board Resolution") </td>
+                    <td>
+                        <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.BoardResolutionDocPath">Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.Raw("Registration Certificate") </td>
+                    <td>
+                        <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.RegCertDocPath">Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.Raw("Pin Certificate") </td>
+                    <td>
+                        <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.PinCertDocPath">Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.Raw("Cr12 Form") </td>
+                    <td>
+                        <a asp-controller="CompanyDocs" asp-action="Download" asp-route-filename="@ViewBag.Cr12DocPath">Download</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+
+        </div>
+        @if (User.IsInRole("MasterAdmin"))
+        {
+            @if ((int)ViewBag.State0 == 0 || (int)ViewBag.State0 == 4)
+            {
+                <div class="panel panel-danger">
+                    <div class="panel-heading "><h4>Approve / Reject </h4></div>
+                    <div class="panel-body">
+                        <form asp-action="ApproveDocs" method="post" asp-controller="Companies">
+                            <input type="hidden" name="appId" value="@ViewBag.DocsId" />
+                            <div>
+                                <label>Comments</label>
+                                <textarea name="Details1" class="form-control" placeholder="~ Please add Descriptive comments here ~"></textarea>
+                            </div>
+                            <div class="pull-right">
+                                <p>
+                                    <div class="row">
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <button class="btn btn-block btn-success btn-default" name="btn" value="Approve" type="submit">Approve</button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-block btn-danger btn-default" name="btn" value="Reject" type="submit">Reject</button>
+                                                </td>
+                                                <td>
+                                                    <a asp-controller="Companies" asp-action="Details" asp-route-id="@ViewBag.Gui" class="btn btn-warning">Back to List</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+
+        @*<div>
+            <a asp-controller="Companies" asp-action="Details" asp-route-id="@ViewBag.Gui" class="btn btn-warning">Back to List</a>
+        </div>*@
+    </div>
+
+       
+
+

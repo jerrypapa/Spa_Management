@@ -1,0 +1,87 @@
+﻿@model Spa_Management.Models.tbDirectors
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TelephoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dob)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dob)
+        </dd>
+    </dl>
+</div>
+@if (User.IsInRole("MasterAdmin"))
+{
+    @if (Model.Verified == false)
+    {
+        <div class="panel panel-danger">
+            <div class="panel-heading "><h4>Approve / Reject </h4></div>
+            <div class="panel-body">
+                <form asp-action="VerifyDirectors" method="post" asp-controller="Companies">
+                    <input type="hidden" name="compDirID" value="@Model.Id" />
+                    <div>
+                        <label>Comments</label>
+                        <textarea name="Comment" class="form-control" placeholder="~ Please add Descriptive comments here ~"></textarea>
+                    </div>
+                    <div class="pull-right">
+                        <p>
+                            <div class="row">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-block btn-success btn-default" name="btn" value="Approve" type="submit">Approve</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-block btn-danger btn-default" name="btn" value="Reject" type="submit">Reject</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-block btn-warning btn-default" name="btn" asp-action="Index" asp-controller="Companies">BackTo List</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    }
+}
+

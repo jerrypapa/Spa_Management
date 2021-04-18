@@ -1,0 +1,42 @@
+﻿@model Spa_Management.Models.EmployeePay
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployeePay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GrossPay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GrossPay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CommisionPerJob)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommisionPerJob)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpaUsers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SpaUsers.FirstName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Spa_Management.Controllers.ViewcompanyDirectors>
+@{
+    ViewData["Title"] = "Directors";
+}
+
+
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Company Directors - @ViewBag.CompanyName</h4></div>
+                    <div class="panel-body">
+                        @if (User.IsInRole("CompanyAdmin"))
+                        {
+                            <p>
+                                <a asp-action="Create" asp-controller="CompanyUsers" asp-route-id="@ViewBag.compGuid"><h4>Add New Company Director</h4></a>
+                            </p>
+                        }
+                        <table id="example1" class="table table-bordered table-striped table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirsName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TelephoneNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.Role)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.idNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirsName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TelephoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    @*<td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.idNumber)
+                                    </td>
+                                    <td>
+                                        @if (item.status == true)
+                                        {
+                                            <button class="btn btn-block btn-success btn-xs">Verified</button>
+
+                                        }
+                                        else
+                                        {
+
+                                            <button class="btn btn-block btn-danger btn-xs">Unverified</button>
+                                        }
+                                    </td>
+                                    @if (User.IsInRole("CompanyAdmin"))
+                                    {
+                                        @if (item.status == false)
+                                        {
+                                            <td>
+                                                <a asp-action="Verify" asp-controller="tbDirectors" asp-route-id="@item.DirectorId">Verify</a> |
+                                            </td>
+                                        }
+                                    }
+
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+
+
+

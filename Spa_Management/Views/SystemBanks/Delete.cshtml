@@ -1,0 +1,56 @@
+﻿@model Spa_Management.Models.tbSystemBanks
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Are you sure you want to delete this?</h4></div>
+            <div class="panel-body">
+                <h3>Sysytem Bank</h3>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.bankCode)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.bankCode)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.bankName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.bankName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AllowAutoGene)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.AllowAutoGene)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.regDate)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.regDate)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.status)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.status)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="SystemBanksGuid" />
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>

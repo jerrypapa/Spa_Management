@@ -1,0 +1,30 @@
+﻿@model Spa_Management.Models.tbBanks
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbBanks</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.bank)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.bank)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BankCode">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,74 @@
+﻿@model Spa_Management.Models.tbComMatrices
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit Commision Matrix</h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="SystemBanksGuid" />
+                    <div class="form-group">
+                        <label asp-for="SystemBanksGuid" class="control-label"></label>
+                        <select asp-for="SystemBanksGuid" class="form-control" asp-items="ViewBag.SystemBanksGuid"></select>
+                        <span asp-validation-for="SystemBanksGuid" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="currency" class="control-label"></label>
+                        <select asp-for="currency" class="form-control" asp-items="ViewBag.currency">
+                            <option>~ Please Select ~</option>
+                        </select>
+                    </div>
+                    @*<div class="form-group">
+                        <label asp-for="from" class="control-label"></label>
+                        <input asp-for="from" class="form-control" />
+                        <span asp-validation-for="from" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="to" class="control-label"></label>
+                        <input asp-for="to" class="form-control" />
+                        <span asp-validation-for="to" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="perCom" class="control-label"></label>
+                        <input asp-for="perCom" class="form-control" />
+                        <span asp-validation-for="perCom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FlatRate" class="control-label"></label>
+                        <input asp-for="FlatRate" class="form-control" />
+                        <span asp-validation-for="FlatRate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="period" class="control-label"></label>
+                        <input asp-for="period" class="form-control" />
+                        <span asp-validation-for="period" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label asp-for="TradePowerPercentage" class="control-label">% Payable to TradePower (As per Matrix sequence)</label>
+                        <input asp-for="TradePowerPercentage" class="form-control" />
+                        <span asp-validation-for="TradePowerPercentage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BankPercentage" class="control-label">% Payable to Bank (As per Matrix sequence)</label>
+                        <input asp-for="BankPercentage" class="form-control" />
+                        <span asp-validation-for="BankPercentage" class="text-danger"></span>
+                    </div>*@
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

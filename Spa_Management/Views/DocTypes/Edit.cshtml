@@ -1,0 +1,41 @@
+﻿@model Spa_Management.Models.tbDocTypes
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit Document Type</h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Type" class="control-label"></label>
+                        <input asp-for="Type" class="form-control" />
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Extensions" class="control-label"></label>
+                        <textarea asp-for="Extensions" class="form-control" ></textarea>
+                        <span asp-validation-for="Extensions" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label asp-for="status" class="control-label"></label>
+                        <input asp-for="status" class="form-control" />
+                        <span asp-validation-for="status" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+</div>
+    </div>

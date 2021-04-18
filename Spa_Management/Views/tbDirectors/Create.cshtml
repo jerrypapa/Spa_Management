@@ -1,0 +1,86 @@
+﻿@model Spa_Management.Models.tbDirectors
+@using static Spa_Management.Models.tbIndivuduals
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h2>Add New Company Director</h2></div>
+            <div class="panel-body">
+                <form asp-action="Create">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="CompanyId" class="control-label"></label>
+                        <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
+                            <option>Please Select</option>
+                        </select>
+                        <span asp-validation-for="IdType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MiddleName" class="control-label"></label>
+                        <input asp-for="MiddleName" class="form-control" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelephoneNumber" class="control-label"></label>
+                        <input asp-for="TelephoneNumber" class="form-control" />
+                        <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdNumber" class="control-label"></label>
+                        <input asp-for="IdNumber" class="form-control" />
+                        <span asp-validation-for="IdNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Dob" class="control-label"></label>
+                        <input asp-for="Dob" class="form-control" type="date" />
+                        <span asp-validation-for="Dob" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdType" class="control-label"></label>
+                        <select asp-for="IdType" class="form-control" asp-items="ViewBag.idType">
+                            <option>Please Select</option>
+                        </select>
+                        <span asp-validation-for="IdType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Back to List" asp-action="Index" class="btn btn-warning" />
+                    </div>
+                    <div>
+                        @*<button class="btn btn-block btn-info btn-default" name="btn" asp-action="Index" asp-controller="CompanyDocs" type="submit">Once done with Directors Registration,Click here to upload company documents</button>*@
+                    </div>
+                </form>
+            </div>
+        </div>
+
+       
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

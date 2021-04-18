@@ -1,0 +1,123 @@
+﻿@model Spa_Management.Models.SpaUsers
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Add new Spa User - @ViewBag.spaName</h4></div>
+            <div class="panel-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="spaGuid" />
+                    @*<div class="form-group">
+                            <label asp-for="tbCompanies.compName" class="control-label"></label>
+                            <input asp-for="tbCompanies.compName" class="form-control" readonly="readonly" value="@ViewBag.CompanyName"/>
+
+                        </div>*@
+                    <table class="table table-responsive table-hover table-striped ">
+                        <tr>
+
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="SirName" class="control-label"></label>
+                                    <input asp-for="SirName" class="form-control" />
+                                    <span asp-validation-for="SirName" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="FirstName" class="control-label"></label>
+                                    <input asp-for="FirstName" class="form-control" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="LastName" class="control-label"></label>
+                                    <input asp-for="LastName" class="form-control" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="contact" class="control-label"></label>
+                                    <input asp-for="contact" class="form-control" />
+                                    <span asp-validation-for="contact" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="email" class="control-label"></label>
+                                    <input asp-for="email" class="form-control" />
+                                    <span asp-validation-for="email" class="text-danger"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="idNumber" class="control-label"></label>
+                                    <input asp-for="idNumber" class="form-control" />
+                                    <span asp-validation-for="idNumber" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        @*<tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label asp-for="gender" class="control-label"></label>
+                                        <input asp-for="gender" class="form-control" />
+                                        <span asp-validation-for="gender" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label asp-for="dob" class="control-label"></label>
+                                        <input asp-for="dob" class="form-control" />
+                                        <span asp-validation-for="dob" class="text-danger"></span>
+                                    </div>
+                                </td>
+                            </tr>*@
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="pysicalLoc" class="control-label"></label>
+                                <input asp-for="pysicalLoc" class="form-control" />
+                                <span asp-validation-for="pysicalLoc" class="text-danger"></span>
+                            </div>
+                        </td>
+
+
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="spaRolesId" class="control-label"></label>
+                                <select asp-for="spaRolesId" class="form-control" asp-items="ViewBag.spaRolesId"></select>
+                                @*<label asp-for="pysicalLoc" class="control-label"></label>
+        <input asp-for="pysicalLoc" class="form-control" />
+        <span asp-validation-for="pysicalLoc" class="text-danger"></span>*@
+                            </div>
+                        </td>
+
+                    </tr>
+                    </table>
+
+                    <div class="form-group pull-right">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</div>

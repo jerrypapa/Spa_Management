@@ -1,0 +1,96 @@
+﻿@model Spa_Management.Models.SpaUsers
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SpaUsers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SirName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SirName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.contact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dob)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dob)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.idType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.idNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.regDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.regDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pysicalLoc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pysicalLoc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpaDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SpaDetails.PinNo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.spaUserGuid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

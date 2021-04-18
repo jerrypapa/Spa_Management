@@ -1,0 +1,40 @@
+﻿@model Spa_Management.Models.tbSysConfigs
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit</h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="code" class="control-label"></label>
+                        <input asp-for="code" class="form-control" />
+                        <span asp-validation-for="code" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value" class="control-label"></label>
+                        <input asp-for="Value" class="form-control" />
+                        <span asp-validation-for="Value" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="status" class="control-label"></label>
+                        <input asp-for="status" class="form-control" />
+                        <span asp-validation-for="status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+        </div>
+    </div>

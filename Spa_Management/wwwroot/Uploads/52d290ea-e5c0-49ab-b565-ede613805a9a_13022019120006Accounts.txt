@@ -1,0 +1,9 @@
+leases -  debit rent receivables - Asset
+	- credit rent revenue - income
+
+
+Receipts -  Credit rent receivables - Asset
+	 -  Debit  Mpesa - Asset
+
+	 - Debit rent revenue - income
+	 - Credit Service Income- income

@@ -1,0 +1,1131 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Spa_Management.Models
+@using static Spa_Management.Models.tbFeedBacks
+@using static Spa_Management.Models.tbIndivuduals
+@using static Spa_Management.Models.tbCompanies
+@using static Spa_Management.Models.tbCompanyUsers
+@using static Spa_Management.Models.tbBeneficiaries
+@using static Spa_Management.Models.tbBeneficiaryEmployees
+
+
+@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SpaIntl</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="~/css/agency.min.css" rel="stylesheet">
+    <style>
+
+        #CompanyModal {
+            /*max-width:800px;*/
+        }
+    </style>
+</head>">
+<body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">SpaIntl</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                        </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Mer" asp-action="Index" title="Manage">DashBoard</a>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a data-toggle="modal" class="nav-link" href="#logInModal">Log in</a></li>
+                        @*<li class="nav-item"><a data-toggle="modal" class="nav-link" href="#BeneficiaryModal">Beneficiary Sign Up</a></li>*@
+                        <li class="nav-item"><a class="nav-link" href="/Home/CompanySignUp">SPA Registration</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Spa/Create">SPA Registration2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Home/CompanySignUp">Customer Registration</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in" style="color:black">Your leading Quality and Affordable SPA Services Provider</div>
+                <div class="intro-heading text-uppercase" style="color:black">SpaIntl</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Services</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div>
+                    <p>
+                        Trade Finance signifies financing for trade, that is both local (domestic) and international trade transactions. It represents the financial instruments and products that are used by financial institutions and companies to facilitate trade.
+                    </p>
+                </div>
+
+                <div style="text-align:center" class="col-lg-12 text-center">
+                    @*<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Main Parties Involved</a>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>*@
+                    <button class="btn btn-primary align-self-lg-center align-content-center" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+                        Click to View Parties & Instruments Involved
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body">
+                                <h4 class="service-heading">Financial Instruments</h4>
+
+                                <p>Guarantees</p>
+                                <p>Performance Bonds</p>
+                                <p>Advance Payment Guarantee</p>
+                                <p>Letters of Credits (LCs); Import and Export</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                            <div class="card card-body">
+                                <h4 class="service-heading">Main Parties Involved</h4>
+                                <p>Banks</p>
+                                <p>Insurance Companies</p>
+                                <p>Traders (Local and international)</p>
+                                <p>Logistics provider</p>
+                                <p>Trade Credit Agencies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+    <!--Services -->
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">
+                        TRADE PAWA is a platform that provides convenient, reliable and affordable link among parties in a trade finance transaction.
+                        Access to financial instruments and products offered by financial institutions and companies to facilitate trade is at the comfort of your desk through TRADE PAWA.
+                        @*TradePawa implements financing for trade, and it concerns both domestic and international trade transactions.
+                            A trade transaction requires a seller of goods and services as well as a buyer. Various intermediaries such as banks and financial institutions can facilitate these transactions by financing the trade.*@
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Team -->
+    @*<section class="bg-light" id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+                        <h3 class="section-subheading text-muted"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="~/img/team/ray.jpg" alt="">
+                            <h4>Raymond Mutura</h4>
+                            <p class="text-muted">Senior Consultant</p>
+                            <ul class="list-inline social-buttons">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="~/img/team/thuku.jpg" alt="">
+                            <h4>Chrispus Thuku</h4>
+                            <p class="text-muted">Lead Developer</p>
+                            <ul class="list-inline social-buttons">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="~/img/team/lyn.jpg" alt="">
+                            <h4>Lynne Miriti</h4>
+                            <p class="text-muted">Business Development Analyst</p>
+                            <ul class="list-inline social-buttons">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="~/img/team/githu.jpg" alt="">
+                            <h4>Githu James</h4>
+                            <p class="text-muted">Software Developer</p>
+                            <ul class="list-inline social-buttons">
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <p class="large text-muted"></p>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!-- Clients -->
+    @*<section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#">
+                            <img class="img-fluid d-block mx-auto" src="img/logos/envato.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#">
+                            <img class="img-fluid d-block mx-auto" src="img/logos/designmodo.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#">
+                            <img class="img-fluid d-block mx-auto" src="img/logos/themeforest.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="#">
+                            <img class="img-fluid d-block mx-auto" src="img/logos/creative-market.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Contact Us</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form asp-action="Create" asp-controller="FeedBacks" id="FeedBackForm" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tbFeedBacks.name" class="control-label"></label>
+                                    <input asp-for="tbFeedBacks.name" class="form-control" placeholder="Enter Your Name" />
+                                    <span asp-validation-for="tbFeedBacks.name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="tbFeedBacks.email" class="control-label"></label>
+
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <input asp-for="tbFeedBacks.email" asp-controller="Manage" asp-action="Index" class="form-control" required value="@UserManager.GetUserName(User)" />
+
+                                    }
+                                    else
+                                    {
+                                        <input asp-for="tbFeedBacks.email" class="form-control" placeholder="Enter Your Email Address" required />
+                                    }
+                                    <span asp-validation-for="tbFeedBacks.email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="tbFeedBacks.phone" class="control-label"></label>
+                                    <input asp-for="tbFeedBacks.phone" class="form-control" placeholder="Phone No" required />
+                                    <span asp-validation-for="tbFeedBacks.phone" class="text-danger"></span>
+                                </div>
+                                @*<div class="form-group">
+                                        <label asp-for="tbFeedBacks.time" class="control-label"></label>
+                                        <input asp-for="tbFeedBacks.time" class="form-control" value="@DateTime.Now" placeholder="@DateTime.Now" />
+                                        <span asp-validation-for="tbFeedBacks.time" class="text-danger"></span>
+                                    </div>*@
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="tbFeedBacks.message" class="control-label"></label>
+                                    <textarea asp-for="tbFeedBacks.message" class="form-control" placeholder="Message" required></textarea>
+                                    <span asp-validation-for="tbFeedBacks.message" class="text-danger"></span>
+                                </div>
+
+                                @*<div class="form-group" style="visibility:hidden">
+                                        <label asp-for="tbFeedBacks.status" class="control-label"></label>
+                                        <input asp-for="tbFeedBacks.status" class="form-control" value="0" />
+                                        <span asp-validation-for="tbFeedBacks.status" class="text-danger"></span>
+                                    </div>*@
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <input type="submit" value="Send Message" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Egerton_University - @DateTime.Now.Year</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li class="list-inline-item">
+                            <a target="_blank" href="home/Privacy">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="home/Terms" target="_blank">Terms of Use</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="home/FaQs" target="_blank">FAQS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Log In Modal-->
+    <div class="modal-dialog modal fade" id="logInModal" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <div class="example-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title"> <b>Log In </b></h5>
+                        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-8 mx-auto">
+                                <div class="modal-body">
+                                    <form asp-action="login" asp-controller="Account" method="post">
+
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="Email"></label>
+                                            <input asp-for="Email" class="form-control" required="" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Password"></label>
+                                            <input asp-for="Password" class="form-control" required="" />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label asp-for="RememberMe">
+                                                    <input asp-for="RememberMe" />
+                                                    @Html.DisplayNameFor(m => m.RememberMe)
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <button type="submit" class="btn btn-block btn-primary">Log in</button>
+                                        </div>
+                                        <p>
+                                            <a asp-action="ForgotPassword" asp-controller="Account">Forgot your password?</a>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Individual  Sign In/Register Modal-->
+    @*<div class="modal-dialog modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="example-modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> <b>Sign Up </b></h5>
+                            <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-10 mx-auto">
+                                    <div class="modal-body">
+                                        Sign Up Details
+
+                                        <form asp-action="Create" asp-controller="Indivuduals" method="post">
+                                            <div asp-validation-summary="All" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <label asp-for="tbIndivuduals.contact" class="control-label"></label>
+                                                <input asp-for="tbIndivuduals.contact" class="form-control" required="" type="number" />
+                                                <span asp-validation-for="tbIndivuduals.contact" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label asp-for="tbIndivuduals.email" class="control-label"></label>
+                                                <input asp-for="tbIndivuduals.email" class="form-control" required="" />
+                                                <span asp-validation-for="tbIndivuduals.email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label asp-for="tbIndivuduals.FirstName" class="control-label"></label>
+                                                <input asp-for="tbIndivuduals.FirstName" class="form-control" required="" />
+                                                <span asp-validation-for="tbIndivuduals.FirstName" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="form-group ">
+                                                <label asp-for="tbIndivuduals.LastName" class="control-label"></label>
+                                                <input asp-for="tbIndivuduals.LastName" class="form-control" required="" />
+                                                <span asp-validation-for="tbIndivuduals.LastName" class="text-danger"></span>
+                                            </div>                                        <div class="form-group">
+                                                <label asp-for="tbIndivuduals.idType" class="control-label"></label>
+                                                <select asp-for="tbIndivuduals.idType" class="form-control" asp-items="ViewBag.idType">
+                                                    <option>Please Select</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="tbIndivuduals.idNumber" class="control-label"></label>
+                                                <input asp-for="tbIndivuduals.idNumber" class="form-control" required="" />
+                                                <span asp-validation-for="tbIndivuduals.idNumber" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+                                                <input type="submit" class="btn btn-block btn-primary pull-right" />
+                                                <p class="pull-right">By signing up, you agree to our <a href="#">Policies</a> </p>
+                                            </div>
+
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <!-- Company Sign In/Register Modal BeneficiaryModal-->
+    <div class="modal-dialog modal fade modal-lg" id="CompanyModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="example-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> <b>Sign Up </b></h5>
+                        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto" style="font-size:smaller">
+                                <div class="modal-body" style="width:100%">
+                                    <form asp-action="CompanySignUp" asp-controller="Companies" method="post">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="container">
+                                            <div><h6>Company Details</h6></div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label asp-for="tbCompanies.compName" class="control-label col-md-4"></label>
+                                                    <div class="col-md-8">
+                                                        <input asp-for="tbCompanies.compName" class="form-control form-control-sm" required="" />
+                                                        <span asp-validation-for="tbCompanies.compName" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.PinNo" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.PinNo" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.PinNo" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.RegCertNo" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.RegCertNo" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.RegCertNo" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.contact" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.contact" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.contact" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.pysicalLoc" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.pysicalLoc" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.pysicalLoc" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.postalAddress" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.postalAddress" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.postalAddress" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        <label asp-for="tbCompanies.PostalCode" class="control-label col-md-4"></label>
+                                                        <div class="col-md-8">
+                                                            <input asp-for="tbCompanies.PostalCode" class="form-control form-control-sm" required="" />
+                                                            <span asp-validation-for="tbCompanies.PostalCode" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <table class="table table-hover table-striped table-responsive">
+                                            <!--<tr>
+                                                <td>
+                                                    <h6>Company Details</h6>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.compName" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.compName" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.compName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.PinNo" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.PinNo" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.PinNo" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.RegCertNo" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.RegCertNo" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.RegCertNo" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.contact" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.contact" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.contact" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.pysicalLoc" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.pysicalLoc" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.pysicalLoc" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.postalAddress" class="control-label"></label>
+                                                        <input asp-for="tbCompanies.postalAddress" class="form-control" required="" />
+                                                        <span asp-validation-for="tbCompanies.postalAddress" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbCompanies.PostalCode" class="control-label"></label>
+                                                        <select asp-for="tbCompanies.PostalCode" class="form-control" asp-items="ViewBag.PostalCode">
+                                                            <option>Please Select Postal Code</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>-->
+                                            <tr>
+                                                <td>
+                                                    <h6>Applicant Details</h6>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.SirName" class="control-label">User Name</label>*@
+                                                        <input asp-for="tbCompanyUsers.FirstName" class="form-control" placeholder="First Name" required="" />
+                                                        <span asp-validation-for="tbCompanyUsers.FirstName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input asp-for="tbCompanyUsers.LastName" class="form-control" placeholder="Last Name" required="" />
+                                                        <span asp-validation-for="tbCompanyUsers.LastName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input asp-for="tbCompanyUsers.email" class="form-control" placeholder="Email" required="" />
+                                                        <span asp-validation-for="tbCompanyUsers.email" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.idNumber" class="control-label">User IDnumber</label>*@
+                                                        <input asp-for="tbCompanyUsers.contact" class="form-control" placeholder="Mobile Number" required="" />
+                                                        <span asp-validation-for="tbCompanyUsers.contact" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.email" class="control-label">User Email</label>*@
+                                                        <input asp-for="tbCompanyUsers.idNumber" class="form-control" placeholder="Id Number" required="" />
+                                                        <span asp-validation-for="tbCompanyUsers.idNumber" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbIndivuduals.idType" class="control-label"></label>
+                                                        <select asp-for="tbIndivuduals.idType" class="form-control" asp-items="ViewBag.idType">
+                                                            <option>Please Select ID Type</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="form-group ">
+                                            <input type="submit" class="btn btn-block btn-primary pull-right" value="SIGN UP" />
+                                            <p class="pull-right">By signing up, you agree to our <a href="home/Privacy" target="_blank">Policies</a> </p>
+                                        </div>
+
+
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-dialog modal fade" id="BeneficiaryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="example-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> <b>Sign Up </b></h5>
+                        <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto" style="font-size:smaller">
+                                <div class="modal-body" style="width:100%">
+                                    <form asp-action="BeneficiarySignUp" asp-controller="Beneficiaries" method="post">
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <table class="table table-hover table-striped table-responsive">
+                                            <tr>
+                                                <td>
+                                                    <h6>Institution Details</h6>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaries.InstitutionName" class="control-label"></label>
+                                                        <input asp-for="tbBeneficiaries.InstitutionName" class="form-control" required="" />
+                                                        <span asp-validation-for="tbBeneficiaries.InstitutionName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaries.contact" class="control-label"></label>
+                                                        <input asp-for="tbBeneficiaries.contact" class="form-control" required="" />
+                                                        <span asp-validation-for="tbBeneficiaries.contact" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaries.pysicalLoc" class="control-label"></label>
+                                                        <input asp-for="tbBeneficiaries.pysicalLoc" class="form-control" required="" />
+                                                        <span asp-validation-for="tbBeneficiaries.pysicalLoc" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaries.postalAddress" class="control-label"></label>
+                                                        <input asp-for="tbBeneficiaries.postalAddress" class="form-control" required="" />
+                                                        <span asp-validation-for="tbBeneficiaries.postalAddress" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaries.email" class="control-label"></label>
+                                                        <input asp-for="tbBeneficiaries.email" class="form-control" required="" />
+                                                        <span asp-validation-for="tbBeneficiaries.email" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h6>Applicant Details</h6>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.SirName" class="control-label">User Name</label>*@
+                                                        <input asp-for="tbBeneficiaryEmployees.FirstName" class="form-control" placeholder="First Name" required="" />
+                                                        <span asp-validation-for="tbBeneficiaryEmployees.FirstName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.contact" class="control-label">User Contact</label>*@
+                                                        <input asp-for="tbBeneficiaryEmployees.LastName" class="form-control" placeholder="Last Number" required="" />
+                                                        <span asp-validation-for="tbBeneficiaryEmployees.LastName" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                @*<td>
+                                                        <div class="form-group">
+                                                            <input asp-for="tbCompanyUsers.MiddleName" class="form-control" placeholder="Name" required="" />
+                                                            <span asp-validation-for="tbCompanyUsers.MiddleName" class="text-danger"></span>
+                                                        </div>
+                                                    </td>*@
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.email" class="control-label">User Email</label>*@
+                                                        <input asp-for="tbBeneficiaryEmployees.email" class="form-control" placeholder="Email" required="" />
+                                                        <span asp-validation-for="tbBeneficiaryEmployees.email" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.idNumber" class="control-label">User IDnumber</label>*@
+                                                        <input asp-for="tbBeneficiaryEmployees.contact" class="form-control" placeholder="Mobile Number" required="" />
+                                                        <span asp-validation-for="tbBeneficiaryEmployees.contact" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        @*<label asp-for="tbCompanyUsers.email" class="control-label">User Email</label>*@
+                                                        <input asp-for="tbBeneficiaryEmployees.idNumber" class="form-control" placeholder="Id Number" required="" />
+                                                        <span asp-validation-for="tbBeneficiaryEmployees.idNumber" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label asp-for="tbBeneficiaryEmployees.idType" class="control-label"></label>
+                                                        <select asp-for="tbBeneficiaryEmployees.idType" class="form-control" asp-items="ViewBag.idType">
+                                                            <option>Please Select Id Type</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="form-group ">
+                                            <input type="submit" class="btn btn-block btn-primary pull-right" value="SIGN UP" />
+                                            <p class="pull-right">By signing up, you agree to our <a href="home/Privacy" target="_blank">Policies</a> </p>
+                                        </div>
+
+
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <!-- Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/02-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Explore</li>
+                                    <li>Category: Graphic Design</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Finish</li>
+                                    <li>Category: Identity</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 4 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Lines</li>
+                                    <li>Category: Branding</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 5 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/05-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Southwest</li>
+                                    <li>Category: Website Design</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 6 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                <img class="img-fluid d-block mx-auto" src="img/portfolio/06-full.jpg" alt="">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-inline">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Window</li>
+                                    <li>Category: Photography</li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Close Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Contact form JavaScript -->
+    <script src="~/js/jqBootstrapValidation.js"></script>
+    <script src="~/js/contact_me.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="~/js/agency.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Spa_Management.Controllers.ViewBankUsers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Bank Users - @ViewBag.BankName</h4></div>
+                    <div class="panel-body">
+                        <p>
+                            <a asp-action="Create" asp-controller="BankUsers" asp-route-id="@ViewBag.BankGuid">Add New Bank User</a>
+                        </p>
+
+                        <table id="example1" class="table table-responsive table-hover table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.contact)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Role)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.idNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.contact)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Role)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.idNumber)
+                                        </td>
+                                        <td>
+                                            @if (item.status == 0)
+                                            {
+                                                <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                                            }
+                                            else if (item.status == 2)
+                                            {
+                                                <button class="btn btn-block btn-info btn-xs">Un-Authorized</button>
+
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-block btn-danger btn-xs">Discontinued</button>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.bankUserGuid">Edit</a> |
+                                            @*<a asp-action="Details" asp-route-id="@item.bankUserGuid">Details</a> |*@
+                                            <a asp-action="Delete" asp-route-id="@item.bankUserGuid">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

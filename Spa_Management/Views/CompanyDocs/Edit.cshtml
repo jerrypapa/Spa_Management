@@ -1,0 +1,53 @@
+﻿@model Spa_Management.Models.CompanyDocs
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Ammend Attachments</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data" asp-controller="CompanyDocs">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            @*<div class="form-group">
+                <label asp-for="CompanyId" class="control-label"></label>
+                <input asp-for="CompanyId" class="form-control" />
+                <span asp-validation-for="CompanyId" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="BoardResolution" class="control-label"></label>
+                <input asp-for="BoardResolution" type="file" class="form-control" />
+                <span asp-validation-for="BoardResolution" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PinCertificate" class="control-label"></label>
+                <input asp-for="PinCertificate" type="file" class="form-control" />
+                <span asp-validation-for="PinCertificate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationCertificate" class="control-label"></label>
+                <input asp-for="RegistrationCertificate" type="file" class="form-control" />
+                <span asp-validation-for="RegistrationCertificate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cr12" class="control-label"></label>
+                <input asp-for="Cr12" type="file" class="form-control" />
+                <span asp-validation-for="Cr12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Upload" class="btn btn-success" />
+                <button class="btn btn-warning btn-default" name="btn" asp-action="Index">Back to List</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

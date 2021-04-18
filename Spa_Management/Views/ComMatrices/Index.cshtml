@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Spa_Management.Models.tbComMatrices>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+					<div class="panel-heading">
+						<h4>Commission Matrices </h4>
+					</div>
+                    <div class="panel-body">
+
+                        @if (User.IsInRole("MasterAdmin"))
+                        {
+                            <p>
+                                <a asp-action="Create">Create New</a>
+                            </p>
+                        }
+                        <table id="example1" class="table table-responsive table-hover table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.tbSystemBanks)
+                                    </th>
+
+                                    @*@if (!User.IsInRole("MasterAdmin") && !User.IsInRole("BankUser"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.tbSystemBanks)
+            </th>
+        }*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.currency)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.from)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.to)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.perCom)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FlatRate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.period)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.BankPercentage)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TradePowerPercentage)
+                                    </th>*@
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.tbSystemBanks.bankName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.currency)
+                                    </td>
+                                    @*<td>
+                                        @Html.DisplayFor(modelItem => item.from)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.to)
+                                    </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.perCom)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FlatRate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.period)
+                                    </td>
+                                    <td>
+                                        @if (item.status == 0)
+                                        {
+                                        <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                                        }
+                                        else
+                                        {
+
+                                        <button class="btn btn-block btn-danger btn-xs">Discontinued</button>
+                                        }
+                                    </td>
+
+                                    @*<td>
+                                        @Html.DisplayFor(modelItem => item.BankPercentage)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TradePowerPercentage)
+                                    </td>*@
+                                    <td>
+                                        @if (User.IsInRole("MasterAdmin"))
+                                        {
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>  <label>|</label>
+                                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> <label>|</label>*@
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                                        }
+
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+      
+    });
+</script>
+

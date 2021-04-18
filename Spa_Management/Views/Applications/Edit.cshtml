@@ -1,0 +1,230 @@
+﻿@model Spa_Management.Models.tbApplications
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="panel panel-info ">
+                            <div class="panel-heading "><h4>Edit Application</h4></div>
+                            <div class="panel-body">
+                                <form asp-action="Edit" method="post" enctype="multipart/form-data" asp-controller="Applications">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="CRBGuid" />
+                                    <table class="table table-hover table-striped table-responsive">
+
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="SystemBanksGuid" class="control-label"></label>
+                                                    <select asp-for="SystemBanksGuid" class="form-control" asp-items="ViewBag.SystemBanksGuid" readonly="readonly">
+                                                        <option>~ Please Select Preffered Bank ~ </option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="amount" class="control-label"></label>
+                                                    <input asp-for="amount" class="form-control" onchange="form.submit();" />
+                                                    <span asp-validation-for="amount" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            @*<td>
+                                                <div class="form-group">
+                                                    <label asp-for="CoreBankingReferenceNumber" class="control-label">CoreBankingReferenceNumber</label>
+                                                    <input class="form-control" readonly="readonly" />
+                                                </div>
+                                            </td>*@
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="currency" class="control-label"></label>
+                                                    <select asp-for="currency" class="form-control" asp-items="ViewBag.currency" onchange="form.submit();">
+                                                        <option>~ Please Select ~</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    @*<label class="control-label">Commision</label>
+                                                        <input class="form-control" readonly="readonly" value="@ViewBag.CommisionAmount" />*@
+                                                    <label asp-for="approvedAmount" class="control-label"></label>
+                                                    <input asp-for="approvedAmount" class="form-control" readonly="readonly" />
+                                                    <span asp-validation-for="amount" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="tenderNo" class="control-label"></label>
+                                                    <input asp-for="tenderNo" class="form-control" />
+                                                    <span asp-validation-for="tenderNo" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="Details" class="control-label"></label>
+                                                    <textarea asp-for="Details" class="form-control" placeholder="Please add Descriptive details here"></textarea>
+                                                    <span asp-validation-for="approvedAmount" class="text-danger"></span>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="bondStartDate" class="control-label"></label>
+                                                    <input asp-for="bondStartDate" class="form-control col-md-3 col-lg-3 col-sm-3" type="date" onchange="form.submit();" />
+                                                    <span asp-validation-for="bondStartDate" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="form-group">
+                                                    <label asp-for="TenderPeriod" class="control-label"></label>
+                                                    <input asp-for="TenderPeriod" class="form-control" placeholder="Tender Period (No. of Days)" onchange="form.submit();" />
+                                                    <span asp-validation-for="TenderPeriod" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="expireDate" class="control-label"></label>
+                                                    <input asp-for="expireDate" class="form-control" type="date" />
+                                                    <span asp-validation-for="expireDate" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="appDate" class="control-label"></label>
+                                                    <input asp-for="appDate" class="form-control" type="date" />
+                                                    <span asp-validation-for="appDate" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="PIN" class="control-label"></label>
+                                                    <input asp-for="PIN" class="form-control" placeholder="Please enter PIN" />
+                                                    <span asp-validation-for="PIN" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label asp-for="Purchaser" class="control-label">Beneficiary</label>
+                                                    <select asp-for="Purchaser" class="form-control" asp-items="ViewBag.Beneficiary">
+                                                        <option>Select Beneficiary</option>
+                                                    </select>
+                                                    @*<input asp-for="Purchaser" class="form-control" placeholder="Please enter Name" />*@
+                                                    @*<span asp-validation-for="Purchaser" class="text-danger"></span>*@
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label asp-for="tenderDocs" class="control-label"></label>
+                                            </td>
+                                            <td>
+                                                @*@if ((Boolean)ViewBag.ShowDoc)
+                                                    {*@
+                                                @{
+                                                    //var dcs = Model.tenderDocs.Replace(Model.CRBGuid.ToString(), "");
+                                                    string dcs = "";
+                                                    var dz = Model.tenderDocs.Split(";");
+                                                    foreach (var d in dz)
+                                                    {
+                                                        if (!string.IsNullOrEmpty(d.Trim()))
+                                                        {
+                                                            dcs = dcs + d.Substring(51) + ", ";
+
+                                                        }
+
+                                                    }
+                                                }
+                                                <input asp-for="tenderDocs" class="form-control" readonly="readonly" value="@dcs" />
+                                                <table class="table table-responsive table-hover">
+                                                    @{
+                                                        //<input asp-for="tbApplicationDocs" />
+                                                        var docs = (List<tbDocUploadReq>)ViewBag.RequiredDocs;
+                                                        foreach (var doc in docs)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden" asp-for="@doc.docReqGuid" />
+                                                                    <label asp-for="@doc.docName" class="control-label">@doc.docName</label>
+                                                                </td>
+                                                                <td>
+                                                                    @if (doc.Status == 2)
+                                                                    {
+                                                                        <button class="btn btn-block btn-danger btn-xs">Mandatory</button>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <button class="btn btn-block btn-success btn-xs">Optional</button>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @*<input type="file" name="@doc.docReqGuid" />*@
+                                                                    <input type="file" name="files" multiple />
+                                                                </td>
+                                                            </tr>
+
+                                                        }
+                                                    }
+
+                                                </table>
+
+                                                @* }*@
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input asp-for="AcceptTerms" type="checkbox" />
+                                                    <label asp-for="AcceptTerms" class="control-label"></label><a href="#"> Click here to read terms</a>
+                                                    <span asp-validation-for="AcceptTerms" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                    <div class="form-group">
+                                        @*<input type="submit" value="Save" class="btn btn-default" />*@
+                                        <input type="submit" value="Save" name="Btn" class="btn btn-default" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*<script>
+        $(document).ready(function () {
+            // get date from MyDate input field
+            var date = $(".bondStartDate").val();
+
+            // use current date as default, if input is empty
+            if (!date) {
+                date = new Date();
+            }
+
+            $('._startDate').datetimepicker({
+                format: 'YYYY/MM/DD',
+                date: date
+            });
+        });
+    </script>*@

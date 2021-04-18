@@ -1,0 +1,70 @@
+﻿@model Spa_Management.Models.tbBeneficialies
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<h2>Create</h2>*@
+
+@*<h4>tbBeneficialies</h4>*@
+@*<hr />*@
+<section class="content">
+    <div class="box">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 col-lg-6">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Add new Beneficiary</h4></div>
+                    <div class="panel-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="indGuid" />
+
+                            <div class="form-group">
+                                <label asp-for="SirName" class="control-label"></label>
+                                <input asp-for="SirName" class="form-control" />
+                                <span asp-validation-for="SirName" class="text-danger"></span>
+                            </div>
+                            @*<div class="form-group" style="visibility:hidden">>
+                                    <label asp-for="FirstName" class="control-label"></label>
+                                    <input asp-for="FirstName" class="form-control" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group" style="visibility:hidden">>
+                                    <label asp-for="LastName" class="control-label"></label>
+                                    <input asp-for="LastName" class="form-control" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>*@
+                            <div class="form-group">
+                                <label asp-for="contact" class="control-label"></label>
+                                <input asp-for="contact" class="form-control" />
+                                <span asp-validation-for="contact" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="email" class="control-label"></label>
+                                <input asp-for="email" class="form-control" />
+                                <span asp-validation-for="email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="physicalLoc" class="control-label"></label>
+                                <input asp-for="physicalLoc" class="form-control" />
+                                <span asp-validation-for="physicalLoc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="adrress" class="control-label"></label>
+                                <input asp-for="adrress" class="form-control" />
+                                <span asp-validation-for="adrress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+

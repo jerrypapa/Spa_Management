@@ -1,0 +1,413 @@
+﻿@model Spa_Management.Controllers.applicationDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Application Details</h4></div>
+    <div class="panel-body">
+        <div class="text-danger"><label> @ViewBag.Gitumi</label></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table table-hover table-responsive" style="font-size:small;">
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.appliedby)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.appliedby)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.ApplicantAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ApplicantAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.BenefName)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BenefName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.BenefAddress)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.BenefAddress)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.appDate)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.appDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.tenderNo)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.tenderNo)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.TenderPeriod)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.TenderPeriod)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.bondStartDate)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.bondStartDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.expireDate)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.expireDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.Details)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.Details)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Bond Amount</b>
+                    </td>
+                    <td>
+                        @{
+                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.amount);
+                        }
+                    </td>
+                </tr>
+                @if (User.IsInRole("CompanyUser") || User.IsInRole("CompanyAdmin") || User.IsInRole("MasterAdmin"))
+                {
+                    <tr>
+                        <td>
+                            <b>Bank Comments</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.aplication.checkerComments)
+                        </td>
+                    </tr>
+                }
+                @if (User.IsInRole("BankUser") || User.IsInRole("BankAdmin"))
+                {
+                    <tr>
+                        <td>
+                            <b>Checker Comments</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.aplication.checkerComments)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Maker Comments</b>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.aplication.comments)
+                        </td>
+                    </tr>
+                }
+
+                <tr>
+                    <td>
+                        <b>Bond Commission</b>
+                    </td>
+                    @if (User.IsInRole("CompanyUser") || User.IsInRole("CompanyAdmin"))
+                    {
+                        <td>
+                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.approvedAmount);
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.BankComm);
+                        </td>
+                    }
+
+                </tr>
+                @if (User.IsInRole("") || User.IsInRole("MasterAdmin"))
+                {
+                    <tr>
+                        <td>
+                            <b>Trade Pawa Commission</b>
+                        </td>
+                        <td>
+                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.approvedAmount));
+
+                        </td>
+                    </tr>
+                }
+                @if (User.IsInRole("BankUser") || User.IsInRole("BankAdmin"))
+                {
+                    <tr>
+                        <td>
+                            <b>Processing Action</b>
+                        </td>
+                        <td>
+
+                            @if (ViewBag.Action == "0700")
+                            {
+                                <button class="btn btn-block btn-danger btn-xs">Send Back To Client</button>
+
+                            }
+                            else
+                       if (ViewBag.Action == "0400")
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Maker Approved</button>
+                            }
+                            else
+                       if (string.IsNullOrWhiteSpace(ViewBag.Action))
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Awaiting Processing</button>
+                            }
+                            else
+                       if (ViewBag.Action == "0600")
+                            {
+                                <button class="btn btn-block btn-danger btn-xs">Send Back To Maker</button>
+                            }
+                            else
+                       if (ViewBag.Action == "0500")
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Checker Approved</button>
+                            }
+
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <b>@Html.DisplayNameFor(model => model.aplication.terms)</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.aplication.AcceptTerms)
+                    </td>
+                </tr>
+                <tr>
+                    @if (User.IsInRole("") || User.IsInRole("BankUser"))
+                    {
+                        <td>
+                            <b>@Html.DisplayNameFor(model => model.aplication.CoreBankingReferenceNumber)</b>
+                        </td>
+                    }
+                    <td>
+                        @if (User.IsInRole("") || User.IsInRole("BankUser"))
+                        {
+                        <td>
+                            @Html.DisplayFor(model => model.aplication.CoreBankingReferenceNumber)
+                        </td>
+                    }
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>@Html.DisplayNameFor(model => model.aplication.status)</b>
+                        </td>
+                        <td>
+
+                            @if ((int)ViewBag.State0 == 9)
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Pending Payment</button>
+
+                            }
+                            @if ((int)ViewBag.State0 == 50)
+                            {
+                                <button class="btn btn-block btn-default btn-xs">Ammended Pending Payment</button>
+
+                            }
+                            else if ((int)ViewBag.State0 == 10)
+                            {
+                                <button class="btn btn-block btn-success btn-xs">Paid Pending Bank Processing</button>
+
+                            }
+                            else if ((int)ViewBag.State0 == 51)
+                            {
+                                <button class="btn btn-block btn-success btn-xs">Ammend Paid Pending Bank Processing</button>
+
+                            }
+                            else if ((int)ViewBag.State0 == 11)
+                            {
+                                <button class="btn btn-block btn-info btn-xs">Verified</button>
+
+                            }
+                            else if ((int)ViewBag.State0 == 52)
+                            {
+                                <button class="btn btn-block btn-info btn-xs">Ammendment Verified</button>
+
+                            }
+                            else if ((int)ViewBag.State0 == 12)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+                            }
+                            else if ((int)ViewBag.State0 == 53)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Ammend Rejected</button>
+                            }
+                            else if ((int)ViewBag.State0 == 13)
+                            {
+
+                                <button class="btn btn-block btn-success btn-xs">Approved</button>
+                            }
+                            else if ((int)ViewBag.State0 == 54)
+                            {
+
+                                <button class="btn btn-block btn-success btn-xs">Ammend Approved</button>
+                            }
+                            else if ((int)ViewBag.State0 == 14)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+                            }
+                            else if ((int)ViewBag.State0 == 15)
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">Discarded</button>
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                <table class="table table-responsive table-hover ">
+                    <tr>
+                        <th><label>Document</label></th>
+                        <th><label>Link</label></th>
+                    </tr>
+                    @{ foreach (var doc in Model.docs)
+                        {
+                            <tr>
+                                <td>@Html.Raw(doc.docPath.Trim().Substring(51)) </td>
+                                <td>
+                                    <a asp-action="Download" asp-route-filename="@doc.docPath">Download</a>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @if (User.IsInRole("BankUser"))
+    {
+        <div class="panel panel-primary ">
+            <div class="panel-heading "><h4>CRB Details</h4></div>
+
+            <div class="panel-body">
+                <div class="text-danger"><label>@ViewBag.CompanyDetails</label></div>
+                <table class="table table-responsive table-striped">
+                    <tr>
+                        <th>Check Date</th>
+                        <th>Score</th>
+                        <th>Details</th>
+                        <th>Trend</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayFor(model => model.crb.date)</td>
+
+                        <td>@Html.DisplayFor(model => model.crb.score)</td>
+
+                        <td>@Html.DisplayFor(model => model.crb.inComeDetails) </td>
+
+                        <td>@Html.DisplayFor(model => model.crb.details) </td>
+
+                        <td>
+                            <a asp-action="CRBDetails" asp-controller="Companies" asp-route-id="@ViewBag.compGuid">Details</a>
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+        @if ((int)ViewBag.State0 == 10 || (int)ViewBag.State0 == 11 || (int)ViewBag.State0 == 12 ||(int)ViewBag.State0 == 51)
+        {
+            <div class="panel panel-danger">
+                <div class="panel-heading "><h4>Approve / Reject </h4></div>
+                <div class="panel-body">
+                    <form asp-action="Approve" method="post" asp-controller="Applications">
+                        <input type="hidden" name="appId" value="@ViewBag.Gui" />
+                        <div>
+                            <label>CoreBanking Reference Number</label>
+                            <textarea name="CoreBankingRef" class="form-control" placeholder="~Please Append Core Banking Reference Here ~"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ActionCode" class="control-label"></label>
+                            <select asp-for="ActionCode" class="form-control" asp-items="ViewBag.BondProcessingActions" name="ActionCode">
+                                <option>~ Please Select ~</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Comments</label>
+                            <textarea name="Details" class="form-control" placeholder="~ Please add Descriptive comments here ~"></textarea>
+                        </div>
+                        <div class="pull-right">
+                            <p>
+                                <div class="row">
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <button class="btn btn-block btn-success btn-default" name="btn" value="Approve" type="submit">Approve</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-block btn-danger btn-default" name="btn" value="Reject" type="submit">Reject</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        }
+
+
+    }
+
+    <div class="panel-footer fa-pull-left">
+        <form asp-action="Index" method="post" asp-controller="Applications">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<input type="hidden" name="appId" value="@ViewBag.Gui" />*@
+            <button class="btn btn-block btn-info btn-default" name="btn" value="Index" type="submit">Back to List</button>
+        </form>
+
+    </div>

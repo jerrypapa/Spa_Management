@@ -1,0 +1,66 @@
+﻿@model Spa_Management.Models.tbEmailLogs
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>tbEmailLogs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="to" class="control-label"></label>
+                <input asp-for="to" class="form-control" />
+                <span asp-validation-for="to" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="from" class="control-label"></label>
+                <input asp-for="from" class="form-control" />
+                <span asp-validation-for="from" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="subject" class="control-label"></label>
+                <input asp-for="subject" class="form-control" />
+                <span asp-validation-for="subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cc" class="control-label"></label>
+                <input asp-for="cc" class="form-control" />
+                <span asp-validation-for="cc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bcc" class="control-label"></label>
+                <input asp-for="bcc" class="form-control" />
+                <span asp-validation-for="bcc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="message" class="control-label"></label>
+                <input asp-for="message" class="form-control" />
+                <span asp-validation-for="message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date" class="control-label"></label>
+                <input asp-for="date" class="form-control" />
+                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

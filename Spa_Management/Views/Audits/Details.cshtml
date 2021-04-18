@@ -1,0 +1,60 @@
+﻿@model Spa_Management.Models.tbAudit
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbAudit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.userID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.action)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.action)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.json)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.json)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.page)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.page)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.actionTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.actionTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sessionId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sessionId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

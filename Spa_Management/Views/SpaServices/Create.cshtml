@@ -1,0 +1,109 @@
+﻿@*odel Spa_Management.Models.SpaServices
+
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h2>Create</h2>
+
+    <h4>SpaServices</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ServiceName" class="control-label"></label>
+                    <input asp-for="ServiceName" class="form-control" />
+                    <span asp-validation-for="ServiceName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Code" class="control-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SpaDetailsId" class="control-label"></label>
+                    <select asp-for="SpaDetailsId" class ="form-control" asp-items="ViewBag.SpaDetailsId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+
+
+@model Spa_Management.Models.SpaServices
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Add new Spa Service - @ViewBag.spaName</h4></div>
+            <div class="panel-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   
+                    <table class="table table-responsive table-hover table-striped ">
+                        <tr>
+
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="ServiceName" class="control-label"></label>
+                                    <input asp-for="ServiceName" class="form-control" />
+                                    <span asp-validation-for="ServiceName" class="text-danger"></span>
+                                </div>
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="Code" class="control-label"></label>
+                                    <input asp-for="Code" class="form-control" />
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label"></label>
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                    </table>
+
+                    <div class="form-group pull-right">
+                        <input type="submit" value="Create" class="btn btn-info" />
+                        <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</div>
+
+

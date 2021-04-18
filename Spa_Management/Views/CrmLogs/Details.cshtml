@@ -1,0 +1,78 @@
+﻿@model Spa_Management.Models.CrmLogs
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CrmLogs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLogged)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateLogged)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateResolved)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateResolved)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntityId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntityId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserPhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntityCategoryCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntityCategoryCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

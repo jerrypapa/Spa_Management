@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Spa_Management.Models.tbCompanies>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Companies</h4></div>
+    <div class="panel-body">
+
+        @*<p>
+            <a asp-action="Create">Create New Company </a>
+        </p>*@
+        <table class="table table-responsive table-striped table-hover ">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.compName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.contact)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pysicalLoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PinNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegCertNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.status)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.compName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contact)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pysicalLoc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PinNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegCertNo)
+                    </td>
+                    <td>
+                        @if (item.status == 0)
+                        {
+                            <button class="btn btn-block btn-info btn-xs">InActive</button>
+                        }
+                        else if (item.status == 1)
+                        {
+                            <button class="btn btn-block btn-success btn-xs">Active</button>
+                        }
+                        else if (item.status == 2)
+                        {
+                            <button class="btn btn-block btn-warning btn-xs">Rejected</button>
+                        }
+                    </td>
+                    @if (User.IsInRole("CompanyAdmin"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.compGuid">Edit</a> |
+                        </td>
+                    }
+                    <td>
+                            <a asp-action="Users" asp-route-id="@item.compGuid">Users</a> |
+                            <a asp-action="Details" asp-route-id="@item.compGuid">Details</a> |
+                            @*<a asp-action="Directors" asp-route-id="@item.compGuid">Directors</a>*@
+                    </td>
+                 
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a asp-controller="mer" asp-action="Index" class="btn btn-warning">Back</a>
+    </div>
+</div>

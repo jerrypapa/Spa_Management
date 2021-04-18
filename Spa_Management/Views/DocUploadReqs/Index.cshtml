@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Spa_Management.Models.tbDocUploadReq>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="col-sm-12 col-md-9 col-lg-12">
+                    <div class="panel panel-info ">
+                        <div class="panel-heading "><h4>Upload Documents</h4></div>
+                        <div class="panel-body">
+                            @if (User.IsInRole("BankAdmin"))
+                            {
+                                <p>
+                                    <a asp-action="Create">Add New</a>
+                                </p>
+
+                            }
+
+                            <table id="example1" class="table table-responsive table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.tbSystemBanks.bankName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.docName)
+                                        </th>
+                                        @*<th>
+                                                @Html.DisplayNameFor(model => model.DocTypes.Type)
+                                            </th>*@
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbSystemBanks.bankName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.docName)
+                                            </td>
+                                            @*<td>
+                                                    @Html.DisplayFor(modelItem => item.DocTypes.Type)
+                                                </td>*@
+                                            <td>
+                                                @if (item.Status == 2)
+                                                {
+                                                    <button class="btn btn-block btn-danger btn-xs">Mandatory</button>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn btn-block btn-success btn-xs">Optional</button>
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.docReqGuid">Edit</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.docReqGuid">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

@@ -1,0 +1,72 @@
+﻿@model Spa_Management.Models.PostAmmendMentMatrix
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PostAmmendMentMatrix</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.MakerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MakerId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckerId)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.from)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.from)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.to)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.to)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perCom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perCom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatRate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FlatRate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.period)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.period)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

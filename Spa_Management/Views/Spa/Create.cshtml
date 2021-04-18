@@ -1,0 +1,463 @@
+﻿@*@model Spa_Management.Models.SpaDetails
+
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h2>Create</h2>
+
+    <h4>SpaDetails</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="registeredBy" class="control-label"></label>
+                    <input asp-for="registeredBy" class="form-control" />
+                    <span asp-validation-for="registeredBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="spaName" class="control-label"></label>
+                    <input asp-for="spaName" class="form-control" />
+                    <span asp-validation-for="spaName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="email" class="control-label"></label>
+                    <input asp-for="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="pysicalLoc" class="control-label"></label>
+                    <input asp-for="pysicalLoc" class="form-control" />
+                    <span asp-validation-for="pysicalLoc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="postalAddress" class="control-label"></label>
+                    <input asp-for="postalAddress" class="form-control" />
+                    <span asp-validation-for="postalAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostalCode" class="control-label"></label>
+                    <input asp-for="PostalCode" class="form-control" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PinNo" class="control-label"></label>
+                    <input asp-for="PinNo" class="form-control" />
+                    <span asp-validation-for="PinNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RegCertNo" class="control-label"></label>
+                    <input asp-for="RegCertNo" class="form-control" />
+                    <span asp-validation-for="RegCertNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="contact" class="control-label"></label>
+                    <input asp-for="contact" class="form-control" />
+                    <span asp-validation-for="contact" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="incNum" class="control-label"></label>
+                    <input asp-for="incNum" class="form-control" />
+                    <span asp-validation-for="incNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="regDate" class="control-label"></label>
+                    <input asp-for="regDate" class="form-control" />
+                    <span asp-validation-for="regDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="status" class="control-label"></label>
+                    <input asp-for="status" class="form-control" />
+                    <span asp-validation-for="status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+@using Microsoft.AspNetCore.Identity
+@using Spa_Management.Models
+@using static Spa_Management.Models.SpaDetails
+@using static Spa_Management.Models.SpaUsers
+
+@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SpaInt'l - Business Registration</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="~/css/agency.min.css" rel="stylesheet">
+    <style>
+
+        #CompanyModal {
+            /*max-width:800px;*/
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            background: #022a5b;
+            width: 100%;
+        }
+
+        .copyright {
+            color: #fff;
+        }
+
+        div.roww-100 {
+            width: 100%;
+        }
+
+        #content {
+            margin-top: 10%;
+        }
+
+        @@media only screen and (max-width: 999px) {
+            div#content {
+                margin-top: 20%;
+            }
+        }
+    </style>
+</head>
+<body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#022a5b;">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">SPAINT'L</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/">Home</a>
+                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Mer" asp-action="Index" title="Manage">DashBoard</a>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active"><a class="nav-link active" href="#CompanyModal">SPA Sign Up</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <!--<header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in" style="color:black">Welcome To TradePawa!</div>
+                <div class="intro-heading text-uppercase" style="color:black">TradePawa</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            </div>
+        </div>
+    </header>-->
+    <!-- Footer -->
+
+    <div class="w-100" id="content" style="margin-bottom:20px;">
+        <div class="row w-100">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form asp-action="SpaSignUp" asp-controller="Spa" method="post">
+                    @*<form asp-action="SpaSignUp" asp-controller="Spa" method="post">*@
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="container">
+
+                        <div class="card">
+                            <div class="card-header" style="background:#022a5b;">
+                                <h6 style="text-align:center;color:#fff;">SPA Business Details</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.spaName" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaDetails.spaName" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaDetails.spaName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.PinNo" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaDetails.PinNo" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaDetails.PinNo" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.RegCertNo" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaDetails.RegCertNo" class="form-control form-control-sm" placeholder="Bussiness Incorporation Cert No." required="" />
+                                                <span asp-validation-for="spaDetails.RegCertNo" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.contact" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaDetails.contact" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaDetails.contact" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.pysicalLoc" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaDetails.pysicalLoc" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaDetails.pysicalLoc" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.postalAddress" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <span asp-validation-for="spaDetails.postalAddress" class="text-danger"></span>
+
+                                                <input class="form-control" value="@ViewBag.postalAddress" id="postalAddress" placeholder="Postal address" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaDetails.PostalCode" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <select asp-for="spaDetails.PostalCode" class="form-control form-control-sm" asp-items="ViewBag.PostalCode">
+                                                    <option>Please Select Postal Code</option>
+                                                </select>
+                                                <span asp-validation-for="spaDetails.PostalCode" class="text-danger"></span>
+                                                @*<input class="form-control" value="@ViewBag.postalAddress" readonly="readonly" onselect="form.submit()" ; />*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" style="background:#022a5b;">
+                                <h6 style="text-align:center;color:#fff;">Applicant Details</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.FirstName" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaUsers.FirstName" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaUsers.FirstName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.LastName" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaUsers.LastName" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaUsers.LastName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.email" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaUsers.email" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaUsers.email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.contact" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaUsers.contact" class="form-control form-control-sm" required="" />
+                                                <span asp-validation-for="spaUsers.contact" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.idNumber" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <input asp-for="spaUsers.idNumber" class="form-control form-control-sm" required="" required />
+                                                <span asp-validation-for="spaUsers.idNumber" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-4"><label asp-for="spaUsers.idType" class="control-label "></label>&nbsp;<span style="color:red;">*</span></div>
+                                            <div class="col-md-8">
+                                                <select asp-for="spaUsers.idType" class="form-control form-control-sm" asp-items="ViewBag.idType" required>
+                                                    <option disabled>Please Select ID Type</option>
+                                                </select>
+                                                <span asp-validation-for="spaUsers.idType" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="" style="margin-top:10px;">
+                            <input type="submit" class="btn btn-block btn-primary pull-right" value="SIGN UP" />
+                            <div class="pull-right" style="margin-top:10px;">By signing up, you agree to our <a href="home/Privacy" target="_blank">Policies</a> </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Egerton_University - @DateTime.Now.Year</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <!--<li class="list-inline-item">
+                            <a href="https://twitter.com/fintechgrp" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/fintechgroup" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.linkedin.com/company/fintech-kenya-limited/" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>-->
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li class="list-inline-item">
+                            <a target="_blank" href="/home/Privacy">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="/home/Terms" target="_blank">Terms of Use</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="/home/FaQs" target="_blank">FAQS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Contact form JavaScript -->
+    <script src="~/js/jqBootstrapValidation.js"></script>
+    <script src="~/js/contact_me.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="~/js/agency.min.js"></script>
+    <script>
+        $(function () {
+            // alert('R');
+            $('#tbCompanies_PostalCode').on('change', function (e) {
+                // alert('R2');
+                if ($(this).val() != 'Please Select Postal Code') {
+                    $.ajax({
+                        url: '/GetPostal/' + $(this).val(),
+                        data: { 'name': '' },
+                        method: 'get',
+                        success: function (msg) {
+                            $('#postalAddress').val(msg);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            $('#postalAddress').val('');
+                        }
+                    });
+                } else {
+                    $('#postalAddress').val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

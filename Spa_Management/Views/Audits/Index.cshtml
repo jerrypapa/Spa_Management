@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Spa_Management.Models.tbAudit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Audit Trail</h4></div>
+                    <div class="panel-body">
+                        <table id="example1" class="table table-striped table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.userID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.action)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.json)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.page)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.actionTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.sessionId)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.userID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.action)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.json)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.page)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.actionTime)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.sessionId)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        $("#example1").DataTable(
+            {
+                "ordering": false
+            }
+        );
+
+    });
+</script>
+

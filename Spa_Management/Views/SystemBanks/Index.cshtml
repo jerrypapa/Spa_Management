@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Spa_Management.Models.tbSystemBanks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Banks</h4></div>
+    <div class="panel-body">
+
+        @if (User.IsInRole("MasterAdmin"))
+        {
+            <p>
+                <a asp-action="Create">Add New Bank</a>
+            </p>
+        }
+            <table class="table table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.bankCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.bankName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaximumSecurityLimit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OveralSecuringLimit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LimitBalance)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BondProcessDays)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AllowAutoGene)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.regDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.bankCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.bankName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaximumSecurityLimit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OveralSecuringLimit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LimitBalance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BondProcessDays)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AllowAutoGene)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.regDate)
+                        </td>
+                        <td>
+
+                            @if (item.status == 0)
+                            {
+                                <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                            }
+                            else
+                            {
+
+                                <button class="btn btn-block btn-danger btn-xs">InActive</button>
+                            }
+                        </td>
+                        <td>
+                            @if (User.IsInRole("BankAdmin"))
+                            {
+                                <a asp-action="Users" asp-route-id="@item.SystemBanksGuid">Users</a> <lable>|</lable>
+                                <a asp-action="Edit" asp-route-id="@item.SystemBanksGuid">Edit</a> <lable>|</lable>
+                                @*<a asp-action="Details" asp-route-id="@item.SystemBanksGuid">Details</a> <lable>|</lable>*@
+                                @*<a asp-action="Delete" asp-route-id="@item.SystemBanksGuid">Delete</a>*@
+
+                            }
+                            else if (User.IsInRole("MasterAdmin"))
+                            {
+                                <a asp-action="Users" asp-route-id="@item.SystemBanksGuid">Users</a> <lable>|</lable>
+                                <a asp-action="Edit" asp-route-id="@item.SystemBanksGuid">Edit</a> <lable>|</lable>
+                                @*<a asp-action="Details" asp-route-id="@item.SystemBanksGuid">Details</a> <lable>|</lable>*@
+                                <a asp-action="Delete" asp-route-id="@item.SystemBanksGuid">Delete</a>
+                            }
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>

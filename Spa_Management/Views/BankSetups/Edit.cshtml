@@ -1,0 +1,56 @@
+﻿@model Spa_Management.Models.BankSetups
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>BankSetups</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data" asp-controller="BankSetups">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            @*<div class="form-group">
+                <label asp-for="BankId" class="control-label"></label>
+                <input asp-for="BankId" class="form-control" />
+                <span asp-validation-for="BankId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="letterHead" class="control-label"></label>
+                <input asp-for="letterHead" type="file" class="form-control" />
+                <span asp-validation-for="letterHead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signature" class="control-label"></label>
+                <input asp-for="Signature" type="file" class="form-control" />
+                <span asp-validation-for="Signature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" type="file" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stamp" class="control-label"></label>
+                <input asp-for="Stamp" type="file" class="form-control" />
+                <span asp-validation-for="Stamp" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

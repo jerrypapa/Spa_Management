@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "42b53cbd-f6c2-43d3-8925-8780f984fe48",
+		"name": "Checkout Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getToken Pilot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"CommandID\": \"gettoken\",\r\n        \"passkey\": \"@P!mar1neus3r\",\r\n        \"username\": \"api_marineuser\"\r\n    }"
+				},
+				"url": {
+					"raw": "http://192.168.5.36:9001/api/billPayment",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"5",
+						"36"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"billPayment"
+					]
+				},
+				"description": "Get the token to use when making API Calls"
+			},
+			"response": []
+		},
+		{
+			"name": "postPayment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"api_marineuser\",\n\t\"merchantToken\":\"e5cd8754-57c3-4361-a836-b38db2dadb9f\",\n\t\"msisdn\":\"254724482507\",\n\t\"merchantreference\":\"MCI201801\",\n\t\"firstname\":\"Burton\",\n\t\"lastname\":\"Muriuki\",\n\t\"address\":\"P.O Box 1234-00100\",\n\t\"currency\":\"KES\",\n\t\"email\":\"bmuriuki@kenswitch.com\",\n\t\"ordersummary\":\"MCI Premium Payment\",\n\t\"amount\":\"100.00\",\n\t\"merchantURL\":\"http:\\/\\/localhost:65514\\/Simulator\\/index.php\",\n\t\"accountNumber\":\"254724482507\",\n\t\"extraData\":\"\"\n}"
+				},
+				"url": {
+					"raw": "http://192.168.5.36:9001/api/postPayment",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"5",
+						"36"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"postPayment"
+					]
+				},
+				"description": "call when calling the checkout"
+			},
+			"response": []
+		}
+	]
+}

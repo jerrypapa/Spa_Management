@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Spa_Management.Models.tbCompanies>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.registeredBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.compName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pysicalLoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.postalAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PinNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegCertNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.contact)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.incDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.incNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.regDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BankCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.branchCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.accNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.registeredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.compName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pysicalLoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postalAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PinNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegCertNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.incDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.incNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.regDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branchCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.accNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.compGuid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.compGuid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.compGuid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

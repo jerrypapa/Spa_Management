@@ -1,0 +1,383 @@
+=============Error Logging ===========
+===========Start============= 1/8/2019 10:46:39 AM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.<>c.<SearchIndividual>b__4_0(WebServices c) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 41
+   at Spa_Management.Operations.GenericProxy`1.Execute[TResult](Func`2 function) in F:\softwares\backup\Spa_Management1\Spa_Management\Operations\GenericProxy.cs:line 33
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 41
+===========End============= 1/8/2019 10:46:39 AM
+=============Error Logging ===========
+===========Start============= 1/9/2019 10:26:43 AM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.<>c.<SearchIndividual>b__4_0(WebServices c) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 41
+   at Spa_Management.Operations.GenericProxy`1.Execute[TResult](Func`2 function) in F:\softwares\backup\Spa_Management1\Spa_Management\Operations\GenericProxy.cs:line 33
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 41
+===========End============= 1/9/2019 10:26:43 AM
+=============Error Logging ===========
+===========Start============= 1/11/2019 10:36:50 AM
+Error Message: The username is not provided. Specify username in ClientCredentials.
+Stack Trace:    at System.ServiceModel.ClientCredentialsSecurityTokenManager.CreateSecurityTokenProvider(SecurityTokenRequirement tokenRequirement)
+   at System.ServiceModel.Channels.TransportSecurityHelpers.GetUserNameTokenProvider(SecurityTokenManager tokenManager, EndpointAddress target, Uri via, String transportScheme, AuthenticationSchemes authenticationScheme, ChannelParameterCollection channelParameters)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.CreateAndOpenTokenProvider(TimeSpan timeout, AuthenticationSchemes authenticationScheme, EndpointAddress target, Uri via, ChannelParameterCollection channelParameters)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.CreateAndOpenTokenProvidersCore(EndpointAddress to, Uri via, ChannelParameterCollection channelParameters, TimeSpan timeout, SecurityTokenProviderContainer& tokenProvider, SecurityTokenProviderContainer& proxyTokenProvider)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.CreateAndOpenTokenProviders(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.OnOpenAsync(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpsChannelFactory`1.HttpsClientRequestChannel.OnOpenAsync(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.OnOpenAsyncInternal(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.System.ServiceModel.IAsyncCommunicationObject.OpenAsync(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.OpenAsyncInternal(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   at System.Runtime.TaskHelpers.CallActionAsync[TArg](Action`1 action, TArg argument)
+   at System.ServiceModel.Channels.CommunicationObject.OpenOtherAsync(ICommunicationObject other, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.OnOpenAsync(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.OnOpenAsyncInternal(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.System.ServiceModel.IAsyncCommunicationObject.OpenAsync(TimeSpan timeout)
+   at System.ServiceModel.Channels.CommunicationObject.OpenAsyncInternal(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   at System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 41
+===========End============= 1/11/2019 10:36:50 AM
+=============Error Logging ===========
+===========Start============= 1/11/2019 10:40:59 AM
+Error Message: Object is read-only.
+Stack Trace:    at System.ServiceModel.Security.UserNamePasswordClientCredential.ThrowIfImmutable()
+   at System.ServiceModel.Security.UserNamePasswordClientCredential.set_UserName(String value)
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType)
+===========End============= 1/11/2019 10:40:59 AM
+=============Error Logging ===========
+===========Start============= 1/11/2019 10:51:10 AM
+Error Message: Object is read-only.
+Stack Trace:    at System.ServiceModel.Security.UserNamePasswordClientCredential.ThrowIfImmutable()
+   at System.ServiceModel.Security.UserNamePasswordClientCredential.set_UserName(String value)
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 40
+===========End============= 1/11/2019 10:51:10 AM
+=============Error Logging ===========
+===========Start============= 1/11/2019 11:48:53 AM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 44
+===========End============= 1/11/2019 11:48:53 AM
+=============Error Logging ===========
+===========Start============= 1/11/2019 12:13:49 PM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType)
+===========End============= 1/11/2019 12:13:49 PM
+=============Error Logging ===========
+===========Start============= 1/14/2019 11:56:42 AM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 45
+===========End============= 1/14/2019 11:56:42 AM
+=============Error Logging ===========
+===========Start============= 1/15/2019 12:11:49 PM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 45
+===========End============= 1/15/2019 12:11:49 PM
+=============Error Logging ===========
+===========Start============= 1/15/2019 12:15:17 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.GenerateIPRSToken(Nullable`1 id) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 591
+===========End============= 1/15/2019 12:15:17 PM
+=============Error Logging ===========
+===========Start============= 1/15/2019 1:15:19 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.GenerateIPRSToken(Nullable`1 id) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 591
+===========End============= 1/15/2019 1:15:19 PM
+=============Error Logging ===========
+===========Start============= 1/16/2019 3:24:01 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.GenerateIPRSToken(Nullable`1 id) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 612
+===========End============= 1/16/2019 3:24:01 PM
+=============Error Logging ===========
+===========Start============= 1/16/2019 3:43:35 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.GenerateIPRSToken(Nullable`1 id)
+===========End============= 1/16/2019 3:43:35 PM
+=============Error Logging ===========
+===========Start============= 1/16/2019 3:51:06 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.GenerateIPRSToken(Nullable`1 id) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 612
+===========End============= 1/16/2019 3:51:06 PM
+=============Error Logging ===========
+===========Start============= 1/30/2019 11:14:29 AM
+Error Message: The content type text/html of the response message does not match the content type of the binding (text/xml; charset=utf-8). If using a custom encoder, be sure that the IsContentTypeSupported method is implemented properly. The first 1024 bytes of the response were: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>500 - Internal server error.</title>
+<style type="text/css">
+<!--
+body{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, Comfortaa;background:#EEEEEE;}
+fieldset{padding:0 15px 10px 15px;} 
+h1{font-size:2.4em;margin:0;color:#FFF;}
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} 
+#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS", Verdana, Comfortaa;color:#FFF;
+background-color:#555555;}
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+<div id="header"><h1>Server Error</h1></div>
+<div id="content">
+ <div class="content-container"><fieldset>
+ '.
+Stack Trace:    at System.ServiceModel.Channels.HttpResponseMessageHelper.ValidateContentTypeAsync()
+   at System.ServiceModel.Channels.HttpResponseMessageHelper.ParseIncomingResponse(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpClientRequestChannel.HttpClientChannelAsyncRequest.ReceiveReplyAsync(TimeoutHelper timeoutHelper)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsync(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.RequestAsyncInternal(Message message, TimeSpan timeout)
+   at System.Runtime.TaskHelpers.WaitForCompletionNoSpin[TResult](Task`1 task)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(MethodCall methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(MethodInfo targetMethod, Object[] args)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Reflection.DispatchProxyGenerator.Invoke(Object[] args)
+   at generatedProxy_1.Search(String , String )
+   at Spa_Management.Models.CRBService.SearchIndividual(String IdNumber, String IdNumberType) in F:\softwares\backup\Spa_Management1\Spa_Management\Models\CRBService.cs:line 45
+===========End============= 1/30/2019 11:14:29 AM
+=============Error Logging ===========
+===========Start============= 2/5/2019 4:33:25 PM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.Payments(String appId) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 535
+===========End============= 2/5/2019 4:33:25 PM
+=============Error Logging ===========
+===========Start============= 2/15/2019 11:29:46 AM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.Payments(String appId) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 546
+===========End============= 2/15/2019 11:29:46 AM
+=============Error Logging ===========
+===========Start============= 2/15/2019 11:31:48 AM
+Error Message: Object reference not set to an instance of an object.
+Stack Trace:    at Spa_Management.Controllers.ApplicationsController.Payments(String appId) in F:\softwares\backup\Spa_Management1\Spa_Management\Controllers\ApplicationsController.cs:line 546
+===========End============= 2/15/2019 11:31:48 AM

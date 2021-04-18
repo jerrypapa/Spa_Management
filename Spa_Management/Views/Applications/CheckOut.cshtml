@@ -1,0 +1,198 @@
+﻿@model Spa_Management.Controllers.applicationDetails
+@{
+    ViewData["Title"] = "CheckOut";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="box">
+            <div class="box-body">
+                <div class="panel panel-info ">
+                    <div class="panel-heading "><h4>Application Details</h4></div>
+                    <div class="panel-body">
+                        <div class="col-md-8">
+                            <div class="text-danger"> @ViewBag.Error</div>
+                            <table class="table table-responsive table-hover table-striped">
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.appliedby)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.appliedby)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.ApplicantAddress)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.ApplicantAddress)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.BenefName)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.BenefName)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.BenefAddress)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.BenefAddress)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.appDate)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.aplication.appDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.tenderNo)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.aplication.tenderNo)
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.TenderPeriod)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.aplication.TenderPeriod)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.amount)</b>
+                                    </td>
+                                    <td>
+                                        @{
+                                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.amount);
+                                        }
+                                        @*@Html.DisplayFor(model => model.aplication.amount)*@
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.approvedAmount)</b>
+                                    </td>
+                                    <td>
+                                        @{
+                                            @String.Format(new System.Globalization.CultureInfo("sw-KE"), "{0:c}", Model.aplication.approvedAmount);
+                                        }
+                                        @*@Html.DisplayFor(model => model.aplication.approvedAmount)*@
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.terms)</b>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => model.aplication.AcceptTerms)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>@Html.DisplayNameFor(model => model.aplication.status)</b>
+                                    </td>
+                                    <td>
+
+                                        @if ((int)ViewBag.State0 == 9 || (int)ViewBag.State0 == 50)
+                                        {
+                                            <button class="btn btn btn-default btn-xs">Pending Payment</button>
+
+                                        }
+                                        else if ((int)ViewBag.State0 == 10)
+                                        {
+                                            <button class="btn btn-block btn-outline-success btn-xs">Paid Pending Bank Processing</button>
+
+                                        }
+                                        else if ((int)ViewBag.State0 == 11)
+                                        {
+                                            <button class="btn btn-block btn-info btn-xs">Verified</button>
+
+                                        }
+                                        else if ((int)ViewBag.State0 == 12)
+                                        {
+
+                                            <button class="btn btn-block btn-danger btn-xs">Rejected</button>
+                                        }
+                                        else if ((int)ViewBag.State0 == 13)
+                                        {
+
+                                            <button class="btn btn-block btn-success btn-xs">Approved</button>
+                                        }
+                                        else if ((int)ViewBag.State0 == 14)
+                                        {
+
+                                            <button class="btn btn-block btn-danger btn-xs">Checker Rejected</button>
+                                        }
+                                        else if ((int)ViewBag.State0 == 15)
+                                        {
+
+                                            <button class="btn btn-block btn-danger btn-xs">Discarded</button>
+                                        }
+
+                                    </td>
+                                </tr>
+                               
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="container-fluid" style="margin-bottom:25px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Payments" method="post" asp-controller="Applications">
+
+                                <div class="form-group">
+                                    <label asp-for="PaymentOption" class="control-label"></label>
+                                    <select asp-for="PaymentOption" class="form-control" asp-items="ViewBag.PaymentOptions">
+                                        <option disabled>~ Please Select Preferred Payment Mode~</option>
+                                    </select>
+                                </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Telephone Number</label>
+                                        <input class="form-control" value="@ViewBag.ApplicantTelephone" />
+                                    </div>
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" name="appId" value="@ViewBag.Gui" />
+                                <input type="hidden" name="appId2" value="@ViewBag.PaymentOption" />
+                                <input type="hidden" name="appId3" value="@ViewBag.ApplicantTelephone" />
+                                <button class="btn btn btn-success btn-default" name="btn" value="Approve" type="submit">Proceed to Payment</button>
+                                @*<button class="btn btn btn-info btn-default" name="btn" value="Index" type="submit">Back to List</button>*@
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer fa-pull-left">
+                    <form asp-action="Index" method="post" asp-controller="Applications">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" name="appId" value="@ViewBag.Gui" />
+                        <button class="btn btn-block btn-info btn-default" name="btn" value="Index" type="submit">Back to List</button>
+                    </form>
+
+                </div>
+                <div class="panel-footer">
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

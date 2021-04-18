@@ -1,0 +1,213 @@
+﻿@model IEnumerable<Spa_Management.Models.tbApplications>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.indGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.compGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appliedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.approvedAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchaser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.approvalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcceptTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.terms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.currency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenderPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bondStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenderDocs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.approvedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkerComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkerDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayRefrence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbSystemBanks)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.indGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.compGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.appliedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.appDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BranchGuid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.approvedAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purchaser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.approvalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AcceptTerms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.terms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.expireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenderPeriod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Period)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenderNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bondStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenderDocs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.approvedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.checkedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.checkerComments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.checkerDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayRefrence)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbSystemBanks.bankCode)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CRBGuid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CRBGuid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CRBGuid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{Html.BeginForm("CreateDocument", "Home", FormMethod.Get);
+    {
+        <div>
+            <input type="submit" value="Create Document" style="width:150px;height:27px" />
+        </div>
+    }
+    Html.EndForm();
+}

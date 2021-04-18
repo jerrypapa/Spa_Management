@@ -1,0 +1,38 @@
+﻿@model Spa_Management.Models.tbNationalities
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-6">
+        <div class="panel panel-info ">
+            <div class="panel-heading "><h4>Edit</h4></div>
+            <div class="panel-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="NationCode" class="control-label"></label>
+                        <input asp-for="NationCode" class="form-control" />
+                        <span asp-validation-for="NationCode" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="NationCode" />
+                    <div class="form-group">
+                        <label asp-for="Nationality" class="control-label"></label>
+                        <input asp-for="Nationality" class="form-control" />
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="id" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+        </div>
+    </div>
+

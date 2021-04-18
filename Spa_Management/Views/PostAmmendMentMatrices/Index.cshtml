@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Spa_Management.Models.PostAmmendMentMatrix>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.MakerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckerId)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.from)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.to)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.perCom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.currency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlatRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.period)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.MakerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckerId)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.from)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.to)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.perCom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.currency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.period)
+            </td>
+            <td>
+                @if (item.status == 0)
+                {
+                    <button class="btn btn-block btn-success btn-xs">Active</button>
+
+                }
+                else
+                {
+
+                    <button class="btn btn-block btn-danger btn-xs">Discontinued</button>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

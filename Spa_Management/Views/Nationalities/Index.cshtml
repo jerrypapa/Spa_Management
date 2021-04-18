@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Spa_Management.Models.tbNationalities>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="panel panel-info ">
+    <div class="panel-heading "><h4>Nationalities</h4></div>
+    <div class="panel-body">
+        <p>
+            <a asp-action="Create">Add New</a>
+        </p>
+        <table class="table table-hover table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NationCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nationality)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NationCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nationality)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    </div>

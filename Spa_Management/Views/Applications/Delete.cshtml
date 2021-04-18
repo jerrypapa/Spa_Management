@@ -1,0 +1,93 @@
+﻿@model Spa_Management.Models.tbApplications
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbApplications</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.appliedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.appliedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.appDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.appDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvedAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvedAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.comments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.terms)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.terms)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.approvedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.approvedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tbCompanies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbCompanies.compName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tbIndivuduals)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbIndivuduals.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tbSystemBanks)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tbSystemBanks.bankCode)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CRBGuid" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,257 @@
+﻿@model Spa_Management.Models.tbApplications
+@using static Spa_Management.Controllers.applicationDetails
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<section class="content">
+    <div class="box">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="panel panel-info ">
+
+                    <div class="panel-heading "><h2><strong>Add New Application</strong></h2></div>
+                    <div class="panel-body">
+                        <div class="text-danger"><label>@ViewBag.Gitumi</label></div>
+                        <form asp-action="Create" method="post" enctype="multipart/form-data" asp-controller="Applications">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Applicant Name</label>
+                                        <input class="form-control" value="@ViewBag.appliedBy" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Applicant Company Address</label>
+                                        <input class="form-control" value="@ViewBag.ApplicantAdd" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PrintCode" class="control-label"></label>
+                                        <select asp-for="PrintCode" class="form-control" asp-items="ViewBag.BondPrintOptions">
+                                            <option>~ Please Select ~</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="amount" class="control-label"></label>
+                                        <input asp-for="amount" class="form-control" placeholder="Please enter Amount" onchange="form.submit();" />
+                                        <span asp-validation-for="amount" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="currency" class="control-label"></label>
+                                        <select asp-for="currency" class="form-control" asp-items="ViewBag.currency" onchange="form.submit();">
+                                            <option>~ Please Select ~</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="SystemBanksGuid" class="control-label"></label>
+                                        <select id="SystemBanksGuid" name="SystemBanksGuid" asp-for="SystemBanksGuid" class="form-control" asp-items="ViewBag.SystemBanksGuid" onchange="form.submit();">
+            <option>~ Please Select Preffered Bank ~ </option>
+        </select>
+                                        @*<select id="SystemBanksGuid" name="SystemBanksGuid" asp-for="SystemBanksGuid" class="form-control" asp-items="@(new SelectList(ViewBag.SystemBanksGuid, "SystemBanksGuid","bankName"))" onchange="form.submit();">
+            <option>~ Please Select Preffered Bank ~ </option>
+        </select>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="BranchGuid" class="control-label">Branch</label>
+                                        <select asp-for="BranchGuid" class="form-control" asp-items="ViewBag.BranchGuid" onchange="form.submit();">
+                                            <option>~ Please Select Preffered Branch ~ </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="bondStartDate" class="control-label"></label>
+                                        <input asp-for="bondStartDate" class="form-control col-md-3 col-lg-3 col-sm-3" type="date" onchange="form.submit();" />
+                                        <span asp-validation-for="bondStartDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="TenderPeriod" class="control-label"></label>
+                                        <input asp-for="TenderPeriod" class="form-control" placeholder="Tender Period (No. of Days)" onchange="form.submit();" />
+                                        <span asp-validation-for="TenderPeriod" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">ExpiryDate</label>
+                                        <input class="form-control" readonly="readonly" value="@ViewBag.ExpiryDate" />
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">ApplicationDate</label>
+                                        <input class="form-control" readonly="readonly" value="@ViewBag.appDate" />
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Commision</label>
+                                        <input class="form-control" readonly="readonly" value="@ViewBag.CommisionAmount" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="tenderNo" class="control-label"></label>
+                                        <input asp-for="tenderNo" class="form-control" placeholder="Please enter Tender Number" />
+                                        <span asp-validation-for="tenderNo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Purchaser" class="control-label">Beneficiary</label>
+                                        <select asp-for="Purchaser" class="form-control" asp-items="ViewBag.Beneficiary" onchange="form.submit()" ;>
+                                            <option>Select Beneficiary</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Beneficiary Address</label>
+                                        <input class="form-control" value="@ViewBag.BenefAdderss" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Details" class="control-label"></label>
+                                        <textarea asp-for="Details" class="form-control" placeholder="Please add Descriptive Tender details here"></textarea>
+                                        <span asp-validation-for="approvedAmount" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <table class="table table-hover table-striped table-responsive">
+
+                                <tr>
+                                    <td>
+                                        <label asp-for="tenderDocs" class="control-label"></label>
+                                    </td>
+                                    <td>
+                                        @if ((Boolean)ViewBag.ShowDoc)
+                                        {
+                                            <table class="table table-responsive table-hover">
+                                                @{
+
+                                                    var docs = (List<tbDocUploadReq>)ViewBag.RequiredDocs;
+                                                    foreach (var doc in docs)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <input type="hidden" asp-for="@doc.docReqGuid" />
+                                                                <label asp-for="@doc.docName" class="control-label">@doc.docName</label>
+                                                            </td>
+                                                            <td>
+                                                                @if (doc.Status == 2)
+                                                                {
+                                                                    <button class="btn btn-block btn-danger btn-xs">Mandatory</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <button class="btn btn-block btn-success btn-xs">Optional</button>
+                                                                }
+                                                            </td>
+                                                            <td>
+
+                                                                <input type="file" name="files" multiple />
+                                                            </td>
+                                                        </tr>
+
+                                                    }
+                                                }
+
+                                            </table>
+
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <input asp-for="AcceptTerms" type="checkbox" />
+                                            <label asp-for="AcceptTerms" class="control-label"></label><a target="_blank" href="Terms"> Click here to read terms</a>
+                                            <span asp-validation-for="AcceptTerms" class="text-danger"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <div class="form-group">
+                                <input type="submit" value="Save" name="Btn" class="btn btn-primary" />
+                                <a asp-action="Index" class="btn btn-warning">Back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+
+
+</div>
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+
+        var items = "<option value='0'>select</option>";
+        $("#BranchGuid").html(items);
+    });
+
+
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#SystemBanksGuid").change(function ()
+            {
+            var url = '@Url.Content("~/")' + "Applications/getBranches";
+            var ddlSource = "#SystemBanksGuid";
+            $.getJSON(url, { id: $(ddlSource).val() }, function (data) {
+                var items = '';
+                $("#BranchGuid").empty();
+                $.each(data, function (i, row) {
+                    items += "<option value='" + row.value + "'>" + row.text + " </option>";
+                });
+                $("#BranchGuid").html(items);
+            })
+            }
+        );
+    });
+</script>*@
+
